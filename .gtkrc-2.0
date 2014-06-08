@@ -1,0 +1,8 @@
+#sets the font
+ gtk-font-name = "ubuntu light 8"
+
+#sets the theme
+ gtk-theme-name = "Dyne"
+
+#sets the icon theme
+ gtk-icon-theme-name = "ChocoDarkOrange"
