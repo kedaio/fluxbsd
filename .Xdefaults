@@ -1,67 +1,91 @@
-XTerm*background: black
-XTerm*foreground: white
-XTerm*scrollBar: false
-XTerm*locale: utf8
-XTerm*faceName:Envy Code R:pixelsize=13:antialias=true:hinting=true
-XTerm*eightBitInput: true
-XTerm*pointerShape: left_ptr
-! URxvt
+!UTOPY
+!By: adr
 
+!Set colorscheme
+URxvt.background: #000000
+URxvt.foreground: #FFFFFF
+URxvt.colorBD: #CFCFCF
+URxvt.colorUL: #969696
+URxvt.colorIT: #686868
+
+
+URxvt.color0:  #2E3436
+URxvt.color1:  #a40000
+URxvt.color2:  #4E9A06
+URxvt.color3:  #C4A000
+URxvt.color4:  #3465A4
+URxvt.color5:  #75507B
+URxvt.color6:  #ce5c00
+URxvt.color7:  #babdb9
+URxvt.color8:  #555753
+URxvt.color9:  #EF2929
+URxvt.color10: #8AE234
+URxvt.color11: #FCE94F
+URxvt.color12: #729FCF
+URxvt.color13: #AD7FA8
+URxvt.color14: #fcaf3e
+URxvt.color15: #EEEEEC
+
+URxvt*loginShell: true
 URxvt*termName: rxvt-256color
 urxvt.xftAntialias: true
-!urxvt*cursorUnderline:  true
 URxvt.colorUL: #ffaf5f
 URxvt.perl-ext-common:  default,matcher
-URxvt.url-launcher:      /usr/local/bin/firefox-esr
+URxvt.url-launcher:      /usr/local/bin/firefox
 URxvt.matcher.button:   1
 urxvt.foreground: 	#E8DFD6
 urxvt.background: 	#0a0B0c
-!urxvt.background: 	#021B21
 urxvt.cursorColor:  #2E3340
-urxvt.color0:       #032C36
-urxvt.color8:       #065F73
-urxvt.color1:       #C2454E
-urxvt.color9:       #EF5847
-urxvt.color2:       #7CBF9E
-urxvt.color10:      #A2D9B1
-urxvt.color3:       #8A7A63
-urxvt.color11:      #BEB090
-urxvt.color4:       #2E3340
-urxvt.color12:      #61778D
-urxvt.color5:       #FF5879
-urxvt.color13:      #FF99A1
-urxvt.color6:       #44B5B1
-urxvt.color14:      #9ED9D8
-urxvt.color7:       #F2F1B9
-urxvt.color15:      #F6F6C9
 URxvt.borderColor:  #021B21
 
-!URxvt*termName: rxvt-256color
-URxvt*transparent: false
-!URxvt*background: black
-!URxvt*foreground: white
-!URxvt*loginShell: true
+URxvt*transparent: true
 URxvt*scrollstyle: rxvt
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
-!URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-!URxvt*scrollColor: #DCDCDC
-!URxvt*troughColor: #A9A9A9
-!URxvt*thickness: 10
-!URxvt*secondaryScroll: true
-!URxvt*saveLines: 700
-!URxvt*mouseWheelScrollPage: true
-!URxvt*cursorBlink: false
-!URxvt*tripleclickwords: true
 URxvt*hold: false
 
-URxvt*urlLauncher: xombrero
+!URxvt*urlLauncher: xombrero
 URxvt*imLocale: en_US.UTF-8
-URxvt*font: xft:Envy Code R:pixelsize=13:antialias=true:hinting=true
-URxvt*boldFont: xft:Envy Code R:pixelsize=13:antialias=true:hinting=true
-! Xcalc
+URxvt*font: xft:uushi:pixelsize=13:antialias=true:hinting=true
+URxvt*boldFont: xft:uushi:pixelsize=13:antialias=true:hinting=true
+
+urxvt*transparent: true
+urxvt*shading: 15
+
+!Black
+*color0: #1b1b1b
+*color8: #3D3D3D
+!Red
+*color1: #BD4645
+*color9: #DF5352
+!Green
+*color2: #5F6E39
+*color10: #788A48
+!Yellow
+*color3: #B8802C
+*color11: #E8A238
+!Blue
+*color4: #45566B
+*color12: #646E8A
+!Magenta
+*color5: #7F3D4B
+*color13: #A14C5E
+!Cyan
+*color6: #8A83AD
+*color14: #A69ED1
+!White
+*color7: #FFFFFF
+*color15: #C1C1C1
+
+XTerm*background: black
+XTerm*foreground: white
+XTerm*scrollBar: false
+XTerm*eightBitInput: true
+XTerm*pointerShape: left_ptr
+XTerm*loginshell: true
+
 xcalc*geometry:                        200x275
 xcalc.ti.bevel.background:             #111111
 xcalc.ti.bevel.screen.background:      #000000
@@ -86,7 +110,6 @@ xcalc.ti.button5.background:  Orange3
 xcalc.ti.button19.background: #611161
 xcalc.ti.button18.background: #611161
 xcalc.ti.button20.background: #611111
-!uncomment to change label on division button
 xcalc.ti.button20.label:      /
 xcalc.ti.button25.background: #722222
 xcalc.ti.button30.background: #833333
@@ -111,7 +134,6 @@ xman*jumpScroll: true
 xman*multiScroll: true
 xman*scrollBar: 0
 xman*background: #040404
-!xman*foreground: #d1a375
 xman*foreground: #afd700
 xman*manualFontBoldColor: #afd700
 xman*manualFontItalicColor: #6495ed
