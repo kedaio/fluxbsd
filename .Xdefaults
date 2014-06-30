@@ -84,7 +84,8 @@ XTerm*foreground: white
 XTerm*scrollBar: false
 XTerm*eightBitInput: true
 XTerm*pointerShape: left_ptr
-XTerm*loginshell: true
+XTerm.*loginshell: true
+XTerm.*font:  -uushi-*-*-*-*-11-*-*-*-*-*-*-*
 
 xcalc*geometry:                        200x275
 xcalc.ti.bevel.background:             #111111

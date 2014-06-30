@@ -1,0 +1,7 @@
+ntpd_flags=		# enabled during install
+nginx_flags=""
+syslogd_flags="${syslogd_flags} -a /var/unbound/dev/log"
+sendmail_flags="NO"
+smtpd_flags=""
+pkg_scripts="noip2 unbound dbus_daemon"
+
