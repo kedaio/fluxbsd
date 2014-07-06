@@ -1,0 +1,44 @@
+conky-text_object.o conky-text_object.o: text_object.c text_object.h \
+  config.h specials.h logging.h mail.h /usr/include/stdlib.h \
+  /usr/include/sys/cdefs.h /usr/include/machine/cdefs.h \
+  /usr/include/machine/_types.h /usr/include/sys/types.h \
+  /usr/include/sys/_types.h /usr/include/machine/endian.h \
+  /usr/include/sys/endian.h /usr/include/sys/select.h \
+  /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
+  /usr/include/stdio.h
+
+text_object.h:
+
+config.h:
+
+specials.h:
+
+logging.h:
+
+mail.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/machine/endian.h:
+
+/usr/include/sys/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/sys/time.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/_time.h:
+
+/usr/include/stdio.h:

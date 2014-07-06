@@ -1,0 +1,3903 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<manpage xmlns="http://docbook2x.sourceforge.net/xmlns/Man-XML" sect="1" h1="conky" h2="1" h3="2012-05-03" h4="" h5="" title="conky" preprocessors="t"><SH>NAME</SH><refnameline><refname>conky</refname><refpurpose>A system monitor for X originally based on the
+			torsmo code, but more kickass. It just keeps on given'er.
+			Yeah.</refpurpose></refnameline><SH>SYNOPSIS</SH><nh><TPauto align="l"><TPtag><b>conky</b> </TPtag><TPitem><para> [
+				<i>options</i>
+			]</para></TPitem></TPauto></nh><SH>DESCRIPTION</SH><para>Conky is a system monitor for X originally based on
+			torsmo. Since its inception, Conky has changed
+			significantly from its predecessor, while maintaining
+			simplicity and configurability. Conky can display just
+			about anything, either on your root desktop or in its own
+			window. Not only does Conky have many built-in objects, it
+			can also display just about any piece of information by
+			using scripts and other external programs.
+		</para><para>Conky has more than 250 built in objects, including
+			support for a plethora of OS stats (uname, uptime, CPU
+			usage, mem usage, disk usage, "top" like process stats, and
+			network monitoring, just to name a few), built in IMAP and
+			POP3 support, built in support for many popular music
+			players (MPD, XMMS2, BMPx, Audacious), and much much more.
+			Conky can display this info either as text, or using simple
+			progress bars and graph widgets, with different fonts and
+			colours.
+		</para><para>We are always looking for help, whether its reporting
+			bugs, writing patches, or writing docs. Please use the
+			facilities at SourceForge to make bug reports, feature
+			requests, and submit patches, or stop by #conky on
+			irc.freenode.net if you have questions or want to
+			contribute.</para><para>Thanks for your interest in Conky.
+		</para><SH>COMPILING</SH><para>For users compiling from source on a binary distro,
+			make sure you have the X development libraries installed
+			(Unless you provide configure with "--disable-x11"). This
+			should be a package along the lines of "libx11-dev" or
+			"xorg-x11-dev" for X11 libs, and similar "-dev" format for
+			the other libs required (depending on your configure
+			options). You should be able to see which extra packages
+			you need to install by reading errors that you get from
+			'./configure'. You can enable/disable stuff by giving
+			options to configure, but be careful with disabling. For
+			example: with --disable-math you won't get errors but
+			logarithmic graphs will be normal graphs and gauges
+			will miss their line. 
+		</para><para>Conky has (for some time) been available in the
+			repositories of most popular distributions. Here are some
+			installation instructions for a few:
+		</para><para>Gentoo users -- Conky is in Gentoo's Portage...
+			simply use "emerge app-admin/conky" for
+			installation.
+		</para><para>Debian, etc. users -- Conky should be in your
+			repositories, and can be installed by doing "aptitude
+			install conky".
+		</para><para>Example to compile and run Conky with all optional
+			components (note that some configure options may differ for
+			your system):
+		</para><TP><TPtag>
+					<b>
+						<tt><b>sh autogen.sh</b></tt>
+					</b>
+					<tt><b># Only required if building from the
+						git repo</b></tt>
+				</TPtag></TP><TP><TPtag>
+					<b>
+						<tt><b>./configure</b></tt>
+					</b>
+					<tt><b>--prefix=/usr --mandir=/usr/share/man
+						--infodir=/usr/share/info --datadir=/usr/share
+						--sysconfdir=/etc --localstatedir=/var/lib
+						--disable-own-window
+						--enable-audacious[=yes|no|legacy]
+						--enable-bmpx --disable-hddtemp --disable-mpd
+						--enable-xmms2 --disable-portmon
+						--disable-network --enable-debug --disable-x11
+						--disable-double-buffer --disable-xdamage
+						--disable-xft</b></tt>
+				</TPtag></TP><TP><TPtag>
+					<b>
+						<tt><b>make</b></tt>
+					</b>
+				</TPtag></TP><TP><TPtag>
+					<b>
+						<tt><b>make install</b></tt>
+					</b>
+					<tt><b># Optional</b></tt>
+				</TPtag></TP><TP><TPtag>
+					<b>
+						<tt><b>src/conky</b></tt>
+					</b>
+				</TPtag></TP><para>Conky has been tested to be compatible with C99 C,
+			however it has not been tested with anything other than
+			gcc, and is not guaranteed to work with other
+			compilers.
+		</para><para/><SH>YOU SHOULD KNOW</SH><para>Conky is generally very good on resources. That said,
+			the more you try to make Conky do, the more resources it is
+			going to consume.
+		</para><para>An easy way to force Conky to reload your ~/.conkyrc:
+			"killall -SIGUSR1 conky". Saves you the trouble of having
+			to kill and then restart. You can now also do the same with
+			SIGHUP.
+		</para><SH>OPTIONS</SH><para>Command line options override configurations defined in
+			configuration file.
+		</para><TP><TPtag>
+            <b>
+                <tt><b>-v | -V | --version</b></tt>
+            </b>
+        </TPtag><TPitem>Prints version and exits 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-q | --quiet</b></tt>
+            </b>
+        </TPtag><TPitem>Run Conky in 'quiet mode' (ie. no output) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-D | --debug</b></tt>
+            </b>
+        </TPtag><TPitem>Increase debugging output, ie. -DD for more
+        debugging 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-a | --alignment=</b></tt>
+            </b>
+            <tt><b>ALIGNMENT</b></tt>
+        </TPtag><TPitem>Text alignment on screen,
+        {top,bottom,middle}_{left,right,middle} or none. Can also
+        be abbreviated with first chars of position, ie. tr for
+        top_right. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-b | --double-buffer</b></tt>
+            </b>
+        </TPtag><TPitem>Use double buffering (eliminates "flicker") 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-c | --config=</b></tt>
+            </b>
+            <tt><b>FILE</b></tt>
+        </TPtag><TPitem>Config file to load instead of $HOME/.conkyrc 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-C | --print-config</b></tt>
+            </b>
+        </TPtag><TPitem>Print builtin default config to stdout. See also
+        the section EXAMPLES for more information. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-d | --daemonize</b></tt>
+            </b>
+        </TPtag><TPitem>Daemonize Conky, aka fork to background 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-f | --font=</b></tt>
+            </b>
+            <tt><b>FONT</b></tt>
+        </TPtag><TPitem>Font to use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-h | --help</b></tt>
+            </b>
+        </TPtag><TPitem>Prints command line help and exits 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-o | --own-window</b></tt>
+            </b>
+        </TPtag><TPitem>Create own window to draw 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-t | --text=</b></tt>
+            </b>
+            <tt><b>TEXT</b></tt>
+        </TPtag><TPitem>Text to render, remember single quotes, like -t '
+        $uptime ' 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-p | --pause=</b></tt>
+            </b>
+            <tt><b>SECONDS</b></tt>
+        </TPtag><TPitem>Time to pause before actually starting Conky
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-u | --interval=</b></tt>
+            </b>
+            <tt><b>SECONDS</b></tt>
+        </TPtag><TPitem>Update interval 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-w | --window-id=</b></tt>
+            </b>
+            <tt><b>WIN_ID</b></tt>
+        </TPtag><TPitem>Window id to draw 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-X | --display=</b></tt>
+            </b>
+            <tt><b>DISPLAY</b></tt>
+        </TPtag><TPitem>X11 display to use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-x</b></tt>
+            </b>
+            <tt><b>X_COORDINATE</b></tt>
+        </TPtag><TPitem>X position 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-y</b></tt>
+            </b>
+            <tt><b>Y_COORDINATE</b></tt>
+        </TPtag><TPitem>Y position 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>-i</b></tt>
+            </b>
+            <tt><b>COUNT</b></tt>
+        </TPtag><TPitem>Number of times to update Conky (and quit) 
+        <para/></TPitem></TP><SH>CONFIGURATION SETTINGS</SH><para>Default configuration file location is $HOME/.conkyrc or
+			${sysconfdir}/conky/conky.conf. On most systems, sysconfdir is
+			/etc, and you can find the sample config file there
+			(/etc/conky/conky.conf).
+		</para><para>You might want to copy it to $HOME/.conkyrc and then
+			start modifying it. Other configs can be found at
+			http://conky.sf.net/
+		</para><TP><TPtag>
+            <b>
+                <tt><b>TEXT</b></tt>
+            </b>
+        </TPtag><TPitem>After this begins text to be formatted on screen.
+        Backslash (\) escapes newlines in the text section. This
+        can be useful for cleaning up config files where conky is
+        used to pipe input to dzen2. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>alignment</b></tt>
+            </b>
+        </TPtag><TPitem>Aligned position on screen, may be top_left,
+        top_right, top_middle, bottom_left, bottom_right,
+        bottom_middle, middle_left, middle_middle, middle_right, or
+        none (also can be abreviated as tl, tr, tm, bl, br, bm, ml,
+        mm, mr). See also gap_x and gap_y.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>append_file</b></tt>
+            </b>
+        </TPtag><TPitem>Append the file given as argument. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>background</b></tt>
+            </b>
+        </TPtag><TPitem>Boolean value, if true, Conky will be forked to
+        background when started. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>border_inner_margin</b></tt>
+            </b>
+        </TPtag><TPitem>Inner border margin in pixels (the margin between
+        the border and text). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>border_outer_margin</b></tt>
+            </b>
+        </TPtag><TPitem>Outer border margin in pixels (the margin between
+        the border and the edge of the window). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>border_width</b></tt>
+            </b>
+        </TPtag><TPitem>Border width in pixels. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>colorN</b></tt>
+            </b>
+        </TPtag><TPitem>Predefine a color for use inside TEXT segments.
+        Substitute N by a digit between 0 and 9, inclusively. When
+        specifying the color value in hex, omit the leading hash
+        (#). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cpu_avg_samples</b></tt>
+            </b>
+        </TPtag><TPitem>The number of samples to average for CPU
+        monitoring. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_bar_size</b></tt>
+            </b>
+        </TPtag><TPitem>Specify a default width and height for bars.
+        Example: 'default_bar_size 0 6'. This is particularly
+        useful for execbar and execibar as they do not take size
+        arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_color</b></tt>
+            </b>
+        </TPtag><TPitem>Default color and border color 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_gauge_size</b></tt>
+            </b>
+        </TPtag><TPitem>Specify a default width and height for gauges.
+        Example: 'default_gauge_size 25 25'. This is particularly
+        useful for execgauge and execigauge as they do not take
+        size arguments 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_graph_size</b></tt>
+            </b>
+        </TPtag><TPitem>Specify a default width and height for graphs.
+        Example: 'default_graph_size 0 25'. This is particularly
+        useful for execgraph and execigraph as they do not take
+        size arguments 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_outline_color</b></tt>
+            </b>
+        </TPtag><TPitem>Default outline color 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>default_shade_color</b></tt>
+            </b>
+        </TPtag><TPitem>Default shading color and border's shading color 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>disable_auto_reload</b></tt>
+            </b>
+        </TPtag><TPitem>Enable to disable the inotify-based auto config reload feature.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskio_avg_samples</b></tt>
+            </b>
+        </TPtag><TPitem>The number of samples to average for disk I/O
+        monitoring. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>display</b></tt>
+            </b>
+        </TPtag><TPitem>Specify an X display to connect to. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>double_buffer</b></tt>
+            </b>
+        </TPtag><TPitem>Use the Xdbe extension? (eliminates flicker) It
+        is highly recommended to use own window with this one so
+        double buffer won't be so big. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>draw_borders</b></tt>
+            </b>
+        </TPtag><TPitem>Draw borders around text? 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>draw_graph_borders</b></tt>
+            </b>
+        </TPtag><TPitem>Draw borders around graphs? 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>draw_outline</b></tt>
+            </b>
+        </TPtag><TPitem>Draw outlines? 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>draw_shades</b></tt>
+            </b>
+        </TPtag><TPitem>Draw shades? 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>extra_newline</b></tt>
+            </b>
+        </TPtag><TPitem>Put an extra newline at the end when writing to
+        stdout, useful for writing to awesome's wiboxes. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>font</b></tt>
+            </b>
+        </TPtag><TPitem>Font name in X, xfontsel can be used to get a
+        nice font 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>format_human_readable</b></tt>
+            </b>
+        </TPtag><TPitem>If enabled, values which are in bytes will be
+        printed in human readable format (i.e., KiB, MiB, etc). If
+        disabled, the number of bytes is printed instead. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>gap_x</b></tt>
+            </b>
+        </TPtag><TPitem>Gap, in pixels, between right or left border of
+        screen, same as passing -x at command line, e.g. gap_x 10.
+        For other position related stuff, see 'alignment'. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>gap_y</b></tt>
+            </b>
+        </TPtag><TPitem>Gap, in pixels, between top or bottom border of
+        screen, same as passing -y at command line, e.g. gap_y 10.
+        For other position related stuff, see 'alignment'. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>hddtemp_host</b></tt>
+            </b>
+        </TPtag><TPitem>Hostname to connect to for hddtemp objects. Defaults
+		to "127.0.0.1".
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>hddtemp_port</b></tt>
+            </b>
+        </TPtag><TPitem>Port to use for hddtemp connections. Defaults to
+		7634.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_up_strictness</b></tt>
+            </b>
+        </TPtag><TPitem>How strict should if_up be when testing an
+        interface for being up? The value is one of up, link or
+        address, to check for the interface being solely up, being
+        up and having link or being up, having link and an assigned
+        IP address. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imap</b></tt>
+            </b>
+        </TPtag><TPitem>Default global IMAP server. Arguments are: "host
+        user pass [-i interval (in seconds)] [-f 'folder'] [-p port]
+        [-e 'command'] [-r retries]". Default port is 143, default
+        folder is 'INBOX', default interval is 5 minutes, and
+        default number of retries before giving up is 5. If the
+        password is supplied as '*', you will be prompted to enter
+        the password when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imlib_cache_flush_interval</b></tt>
+            </b>
+        </TPtag><TPitem>Interval (in seconds) to flush Imlib2 cache. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imlib_cache_size</b></tt>
+            </b>
+        </TPtag><TPitem>
+            Imlib2 image cache size, in bytes. Defaults to
+            4MiB. Increase this value if you use $image lots. Set
+            to 0 to disable the image cache.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imlib_image_alpha</b></tt>
+            </b>
+        </TPtag><TPitem>
+            Boolean, use transparency for images? Enabled by
+            default. If own_window_visual_argb is enabled, images
+            appear transparent; disable this option to make images
+            appear opaque.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_draw_hook_post</b></tt>
+            </b>
+            <tt><b>function_name [function arguments]</b></tt>
+        </TPtag><TPitem>
+            This function, if defined, will be called by
+            Conky through each iteration after drawing to the
+            window. Requires X support. Takes any number of
+            optional arguments. Use this hook for drawing things on
+            top of what Conky draws. Conky puts 'conky_' in front
+            of function_name to prevent accidental calls to the
+            wrong function unless you place 'conky_' in front of it
+            yourself.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_draw_hook_pre</b></tt>
+            </b>
+            <tt><b>function_name [function arguments]</b></tt>
+        </TPtag><TPitem>
+            This function, if defined, will be called by
+            Conky through each iteration before drawing to the
+            window. Requires X support. Takes any number of
+            optional arguments. Use this hook for drawing things on
+            top of what Conky draws. Conky puts 'conky_' in front
+            of function_name to prevent accidental calls to the
+            wrong function unless you place 'conky_' in front of it
+            yourself.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_load</b></tt>
+            </b>
+        </TPtag><TPitem>Loads the Lua scripts separated by spaces. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_shutdown_hook</b></tt>
+            </b>
+            <tt><b>function_name [function arguments]</b></tt>
+        </TPtag><TPitem>
+            This function, if defined, will be called by
+            Conky at shutdown or when the configuration is
+            reloaded. Use this hook to clean up after yourself,
+            such as freeing memory which has been allocated by
+            external libraries via Lua. Conky puts 'conky_' in
+            front of function_name to prevent accidental calls to
+            the wrong function unless you place 'conky_' in
+            front of it yourself.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_startup_hook</b></tt>
+            </b>
+            <tt><b>function_name [function arguments]</b></tt>
+        </TPtag><TPitem>
+            This function, if defined, will be called by
+            Conky at startup or when the configuration is reloaded.
+            Use this hook to initialize values, or for any run-once
+            applications. Conky puts 'conky_' in front of
+            function_name to prevent accidental calls to the wrong
+            function unless you place 'conky_' in front of
+            it yourself.<para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mail_spool</b></tt>
+            </b>
+        </TPtag><TPitem>Mail spool for mail checking 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>max_port_monitor_connections</b></tt>
+            </b>
+        </TPtag><TPitem>Allow each port monitor to track at most this
+        many connections (if 0 or not set, default is 256) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>max_specials</b></tt>
+            </b>
+        </TPtag><TPitem>Maximum number of special things, e.g. fonts,
+        offsets, aligns, etc. (default is 512) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>max_text_width</b></tt>
+            </b>
+            <tt><b>width</b></tt>
+        </TPtag><TPitem>When a line in the output contains 'width'
+	chars and the end isn't reached, the next char will start
+	on a new line. If you want to make sure that lines don't
+	get broken, set 'width' to 0
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>max_user_text</b></tt>
+            </b>
+            <tt><b>bytes</b></tt>
+        </TPtag><TPitem>Maximum size of user text buffer, i.e. layout
+        below TEXT line in config file (default is 16384 bytes) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>maximum_width</b></tt>
+            </b>
+            <tt><b>pixels</b></tt>
+        </TPtag><TPitem>Maximum width of window 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>minimum_size</b></tt>
+            </b>
+            <tt><b>width (height)</b></tt>
+        </TPtag><TPitem>Minimum size of window 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_host</b></tt>
+            </b>
+        </TPtag><TPitem>Host of MPD server 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_password</b></tt>
+            </b>
+        </TPtag><TPitem>MPD server password 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_port</b></tt>
+            </b>
+        </TPtag><TPitem>Port of MPD server 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>music_player_interval</b></tt>
+            </b>
+        </TPtag><TPitem>Music player thread update interval (defaults to
+        Conky's update interval) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>net_avg_samples</b></tt>
+            </b>
+        </TPtag><TPitem>The number of samples to average for net data 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>no_buffers</b></tt>
+            </b>
+        </TPtag><TPitem>Subtract (file system) buffers from used memory?
+        
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>nvidia_display</b></tt>
+            </b>
+        </TPtag><TPitem>The display that the nvidia variable will use (defaults to the value of the
+            display variable)
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>out_to_console</b></tt>
+            </b>
+        </TPtag><TPitem>Print text to stdout. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>out_to_ncurses</b></tt>
+            </b>
+        </TPtag><TPitem>Print text in the console, but use ncurses so
+        that conky can print the text of a new update over the old
+        text. (In the future this will provide more useful things) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>out_to_stderr</b></tt>
+            </b>
+        </TPtag><TPitem>Print text to stderr. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>out_to_x</b></tt>
+            </b>
+        </TPtag><TPitem>When set to no, there will be no output in X
+        (useful when you also use things like out_to_console). If
+        you set it to no, make sure that it's placed before all
+        other X-related setting (take the first line of your
+        configfile to be sure). Default value is yes 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>override_utf8_locale</b></tt>
+            </b>
+        </TPtag><TPitem>Force UTF8? requires XFT 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>overwrite_file</b></tt>
+            </b>
+        </TPtag><TPitem>Overwrite the file given as argument. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window</b></tt>
+            </b>
+        </TPtag><TPitem>Boolean, create own window to draw? 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_class</b></tt>
+            </b>
+        </TPtag><TPitem>Manually set the WM_CLASS name. Defaults to
+        "Conky". 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_colour</b></tt>
+            </b>
+            <tt><b>colour</b></tt>
+        </TPtag><TPitem>If own_window_transparent no, set a specified
+        background colour (defaults to black). Takes either a hex
+        value (e.g. ffffff, note the lack of '#') or a valid RGB
+        name (see /usr/lib/X11/rgb.txt)
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_hints</b></tt>
+            </b>
+            <tt><b>
+            undecorated,below,above,sticky,skip_taskbar,skip_pager</b></tt>
+        </TPtag><TPitem>If own_window is yes, you may use these window
+        manager hints to affect the way Conky displays. Notes: Use
+        own_window_type desktop as another way to implement many of
+        these hints implicitly. If you use own_window_type
+        override, window manager hints have no meaning and are
+        ignored. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_title</b></tt>
+            </b>
+        </TPtag><TPitem>Manually set the window name. Defaults to
+        "&lt;hostname&gt; - conky". 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_argb_visual</b></tt>
+            </b>
+        </TPtag><TPitem>Boolean, use ARGB visual? ARGB can be used for real
+			transparency, note that a composite manager is required for real
+			transparency.  This option will not work as desired (in most cases)
+			in conjunction with 'own_window_type override'.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_argb_value</b></tt>
+            </b>
+        </TPtag><TPitem>When ARGB visuals are enabled, this use this to modify the alpha value used.  Valid range is 0-255, where 0 is 0% opacity, and 255 is 100% opacity.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_transparent</b></tt>
+            </b>
+        </TPtag><TPitem>Boolean, set transparency? If ARGB visual is enabled, sets
+			background opacity to 0%.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>own_window_type</b></tt>
+            </b>
+        </TPtag><TPitem>if own_window is yes, you may specify type
+        normal, desktop, dock, panel or override (default: normal).
+        Desktop windows are special windows that have no window
+        decorations; are always visible on your desktop; do not
+        appear in your pager or taskbar; and are sticky across all
+        workspaces. Panel windows reserve space along a desktop
+        edge, just like panels and taskbars, preventing maximized
+        windows from overlapping them. The edge is chosen based on
+        the alignment option. Override windows are not under the
+        control of the window manager. Hints are ignored. This type
+        of window can be useful for certain situations. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pad_percents</b></tt>
+            </b>
+        </TPtag><TPitem>Pad percentages to this many decimals (0 = no
+        padding) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pop3</b></tt>
+            </b>
+        </TPtag><TPitem>Default global POP3 server. Arguments are: "host
+        user pass [-i interval (in seconds)] [-p port] [-e 'command']
+        [-r retries]". Default port is 110, default interval is 5
+        minutes, and default number of retries before giving up is
+        5. If the password is supplied as '*', you will be prompted
+        to enter the password when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>short_units</b></tt>
+            </b>
+        </TPtag><TPitem>Shortens units to a single character (kiB-&gt;k,
+        GiB-&gt;G, etc.). Default is off. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>show_graph_range</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the time range covered by a graph. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>show_graph_scale</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the maximum value in scaled graphs. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>stippled_borders</b></tt>
+            </b>
+        </TPtag><TPitem>Border stippling (dashing) in pixels 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>temperature_unit</b></tt>
+            </b>
+        </TPtag><TPitem>Desired output unit of all objects displaying a
+        temperature. Parameters are either "fahrenheit" or
+        "celsius". The default unit is degree Celsius. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>templateN</b></tt>
+            </b>
+        </TPtag><TPitem>Define a template for later use inside TEXT
+        segments. Substitute N by a digit between 0 and 9,
+        inclusively. The value of the variable is being inserted
+        into the stuff below TEXT at the corresponding position,
+        but before some substitutions are applied: 
+        <para>'\n' -&gt; newline<br/>'\\' -&gt; backslash<br/>'\ ' -&gt; space<br/>'\N' -&gt; template argument N</para><para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>text_buffer_size</b></tt>
+            </b>
+            <tt><b>bytes</b></tt>
+        </TPtag><TPitem>Size of the standard text buffer (default is 256
+        bytes). This buffer is used for intermediary text, such as
+        individual lines, output from $exec vars, and various other
+        variables. Increasing the size of this buffer can
+        drastically reduce Conky's performance, but will allow for
+        more text display per variable. The size of this buffer
+        cannot be smaller than the default value of 256 bytes. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>times_in_seconds</b></tt>
+            </b>
+        </TPtag><TPitem>If true, variables that output times output a number
+	that represents seconds. This doesn't affect $time, $tztime and
+	$utime
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top_cpu_separate</b></tt>
+            </b>
+        </TPtag><TPitem>If true, cpu in top will show usage of one
+        processor's power. If false, cpu in top will show the usage
+        of all processors' power combined. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top_name_width</b></tt>
+            </b>
+        </TPtag><TPitem>Width for $top name value (defaults to 15
+        characters). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>total_run_times</b></tt>
+            </b>
+        </TPtag><TPitem>Total number of times for Conky to update before
+        quitting. Zero makes Conky run forever 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>update_interval</b></tt>
+            </b>
+            <tt><b>seconds</b></tt>
+        </TPtag><TPitem>Update interval 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>update_interval_on_battery</b></tt>
+            </b>
+            <tt><b>seconds</b></tt>
+        </TPtag><TPitem>Update interval when running on batterypower 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>uppercase</b></tt>
+            </b>
+        </TPtag><TPitem>Boolean value, if true, text is rendered in upper
+        case 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>use_spacer</b></tt>
+            </b>
+        </TPtag><TPitem>Adds spaces around certain objects to stop them
+        from moving other things around. Arguments are left, right,
+        and none (default). The old true/false values are
+        deprecated and default to right/none respectively. Note
+        that this only helps if you are using a mono font, such as
+        Bitstream Vera Sans Mono. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>use_xft</b></tt>
+            </b>
+        </TPtag><TPitem>Use Xft (anti-aliased font and stuff) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xftalpha</b></tt>
+            </b>
+        </TPtag><TPitem>Alpha of Xft font. Must be a value at or between
+        1 and 0. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xftfont</b></tt>
+            </b>
+        </TPtag><TPitem>Xft font to use. 
+        <para/></TPitem></TP><SH>OBJECTS/VARIABLES</SH><para>Colours are parsed using XParsecolor(), there might be a
+			list of them: /usr/share/X11/rgb.txt. 
+			Colour can be also in
+			#rrggbb format (hex).
+		</para><para>
+			Some objects may create threads, and sometimes these threads will
+			not be destroyed until Conky terminates.  There is no way to
+			destroy or clean up threads while Conky is running.  For example,
+			if you use an MPD variable, the MPD thread will keep running until
+			Conky dies.  Some threaded objects will use one of the parameters
+			as a 'key', so that you only have 1 relevant thread running (for
+			example, the $curl, $rss and $weather objects launch one thread per
+			URI).
+		</para><TP><TPtag>
+            <b>
+                <tt><b>acpiacadapter</b></tt>
+            </b>
+            <tt><b>(adapter)</b></tt>
+        </TPtag><TPitem>ACPI ac adapter state. On linux, the adapter option specifies the
+        subfolder of /sys/class/power_supply containing the state information (tries "AC"
+        and "ADP1" if there is no argument given). Non-linux systems ignore it.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>acpifan</b></tt>
+            </b>
+        </TPtag><TPitem>ACPI fan state 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>acpitemp</b></tt>
+            </b>
+        </TPtag><TPitem>ACPI temperature in C. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>addr</b></tt>
+            </b>
+            <tt><b>(interface)</b></tt>
+        </TPtag><TPitem>IP address for an interface, or "No Address" if
+        no address is assigned. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>addrs</b></tt>
+            </b>
+            <tt><b>(interface)</b></tt>
+        </TPtag><TPitem>IP addresses for an interface (if one - works
+        like addr). Linux only. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>adt746xcpu</b></tt>
+            </b>
+        </TPtag><TPitem>CPU temperature from therm_adt746x 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>adt746xfan</b></tt>
+            </b>
+        </TPtag><TPitem>Fan speed from therm_adt746x 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>alignc</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Align text to centre 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>alignr</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Right-justify text, with space of N 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd</b></tt>
+            </b>
+            <tt><b>host</b></tt>
+            <tt><b>port</b></tt>
+        </TPtag><TPitem>Sets up the connection to apcupsd daemon. Prints
+        nothing, defaults to localhost:3551 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_cable</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the UPS connection type. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_charge</b></tt>
+            </b>
+        </TPtag><TPitem>Current battery capacity in percent. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_lastxfer</b></tt>
+            </b>
+        </TPtag><TPitem>Reason for last transfer from line to battery. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_linev</b></tt>
+            </b>
+        </TPtag><TPitem>Nominal input voltage. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_load</b></tt>
+            </b>
+        </TPtag><TPitem>Current load in percent. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_loadbar</b></tt>
+            </b>
+        </TPtag><TPitem>Bar showing current load. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_loadgauge</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Gauge that shows current load. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_loadgraph</b></tt>
+            </b>
+            <tt><b>(height),(width) (gradient colour 1) (gradient
+            colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>History graph of current load. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_model</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the model of the UPS. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_name</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the UPS user-defined name. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_status</b></tt>
+            </b>
+        </TPtag><TPitem>Prints current status (on-line, on-battery). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_temp</b></tt>
+            </b>
+        </TPtag><TPitem>Current internal temperature. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_timeleft</b></tt>
+            </b>
+        </TPtag><TPitem>Time left to run on battery. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apcupsd_upsmode</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the UPS mode (e.g. standalone). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apm_adapter</b></tt>
+            </b>
+        </TPtag><TPitem>Display APM AC adapter status (FreeBSD only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apm_battery_life</b></tt>
+            </b>
+        </TPtag><TPitem>Display APM battery life in percent (FreeBSD
+        only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>apm_battery_time</b></tt>
+            </b>
+        </TPtag><TPitem>Display remaining APM battery life in hh:mm:ss or
+        "unknown" if AC adapterstatus is on-line or charging
+        (FreeBSD only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_bar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Progress bar 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_bitrate</b></tt>
+            </b>
+        </TPtag><TPitem>Bitrate of current tune 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_channels</b></tt>
+            </b>
+        </TPtag><TPitem>Number of audio channels of current tune 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_filename</b></tt>
+            </b>
+        </TPtag><TPitem>Full path and filename of current tune 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_frequency</b></tt>
+            </b>
+        </TPtag><TPitem>Sampling frequency of current tune 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_length</b></tt>
+            </b>
+        </TPtag><TPitem>Total length of current tune as MM:SS 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_length_seconds</b></tt>
+            </b>
+        </TPtag><TPitem>Total length of current tune in seconds 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_main_volume</b></tt>
+            </b>
+        </TPtag><TPitem>The current volume fetched from Audacious 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_playlist_length</b></tt>
+            </b>
+        </TPtag><TPitem>Number of tunes in playlist 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_playlist_position</b></tt>
+            </b>
+        </TPtag><TPitem>Playlist position of current tune 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_position</b></tt>
+            </b>
+        </TPtag><TPitem>Position of current tune (MM:SS) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_position_seconds</b></tt>
+            </b>
+        </TPtag><TPitem>Position of current tune in seconds 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_status</b></tt>
+            </b>
+        </TPtag><TPitem>Player status (Playing/Paused/Stopped/Not
+        running) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>audacious_title</b></tt>
+            </b>
+            <tt><b>(max length)</b></tt>
+        </TPtag><TPitem>Title of current tune with optional maximum
+        length specifier 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>battery</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Battery status and remaining percentage capacity
+        of ACPI or APM battery. ACPI battery number can be given as
+        argument (default is BAT0). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>battery_bar</b></tt>
+            </b>
+            <tt><b>(height),(width) (num)</b></tt>
+        </TPtag><TPitem>Battery percentage remaining of ACPI battery in a
+        bar. ACPI battery number can be given as argument (default
+        is BAT0). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>battery_percent</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Battery percentage remaining for ACPI battery.
+        ACPI battery number can be given as argument (default is
+        BAT0). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>battery_short</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Battery status and remaining percentage capacity
+        of ACPI or APM battery. ACPI battery number can be given as
+        argument (default is BAT0). This mode display a short
+        status, which means that C is displayed instead of
+        charging, D for discharging, F for full, N for not present,
+        E for empty and U for unknown. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>battery_time</b></tt>
+            </b>
+            <tt><b>(num)</b></tt>
+        </TPtag><TPitem>Battery charge/discharge time remaining of ACPI
+        battery. ACPI battery number can be given as argument
+        (default is BAT0). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>blink</b></tt>
+            </b>
+            <tt><b>text_and_other_conky_vars</b></tt>
+        </TPtag><TPitem>Let 'text_and_other_conky_vars' blink on and off.
+        
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_album</b></tt>
+            </b>
+        </TPtag><TPitem>Album in current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_artist</b></tt>
+            </b>
+        </TPtag><TPitem>Artist in current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_bitrate</b></tt>
+            </b>
+        </TPtag><TPitem>Bitrate of the current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_title</b></tt>
+            </b>
+        </TPtag><TPitem>Title of the current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_track</b></tt>
+            </b>
+        </TPtag><TPitem>Track number of the current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>bmpx_uri</b></tt>
+            </b>
+        </TPtag><TPitem>URI of the current BMPx track 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>buffers</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of memory buffered 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cached</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of memory cached 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cat</b></tt>
+            </b>
+            <tt><b>file</b></tt>
+        </TPtag><TPitem>Reads a file and displays the contents in conky.
+        This is useful if you have an independent process
+        generating output that you want to include in conky.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>catp</b></tt>
+            </b>
+            <tt><b>file</b></tt>
+        </TPtag><TPitem>Reads a file and displays the contents in conky.
+        This is useful if you have an independent process
+        generating output that you want to include in conky.  This
+        differs from $cat in that it parses the contents of the
+        file, so you can insert things like ${color red}hi!${color}
+        in your file and have it correctly parsed by Conky.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cmdline_to_pid</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem>PID of the first process that has string in it's
+	commandline
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>color</b></tt>
+            </b>
+            <tt><b>(color)</b></tt>
+        </TPtag><TPitem>Change drawing color to 'color' which is a name of
+        a color or a hexcode preceded with # (for example #0A1B2C ).
+        If you use ncurses only the following colors are supported:
+	red,green,yellow,blue,magenta,cyan,black,white.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>colorN</b></tt>
+            </b>
+        </TPtag><TPitem>Change drawing color to colorN configuration
+        option, where N is a digit between 0 and 9, inclusively. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>combine</b></tt>
+            </b>
+            <tt><b>var1 var2</b></tt>
+        </TPtag><TPitem>Places the lines of var2 to the right of the
+        lines of var1 separated by the chars that are put between
+        var1 and var2. For example: ${combine ${head /proc/cpuinfo
+        2} - ${head /proc/meminfo 1}} gives as output
+        "cpuinfo_line1 - meminfo_line1" on line 1 and
+        "cpuinfo_line2 -" on line 2. $combine vars can also be
+        nested to place more vars next to each other. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_build_arch</b></tt>
+            </b>
+        </TPtag><TPitem>CPU architecture Conky was built for 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_build_date</b></tt>
+            </b>
+        </TPtag><TPitem>Date Conky was built 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_version</b></tt>
+            </b>
+        </TPtag><TPitem>Conky version 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cpu</b></tt>
+            </b>
+            <tt><b>(cpuN)</b></tt>
+        </TPtag><TPitem>CPU usage in percents. For SMP machines, the CPU
+        number can be provided as an argument. ${cpu cpu0} is the
+        total usage, and ${cpu cpuX} (X &gt;= 1) are individual
+        CPUs. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cpubar</b></tt>
+            </b>
+            <tt><b>(cpuN) (height),(width)</b></tt>
+        </TPtag><TPitem>Bar that shows CPU usage, height is bar's height
+        in pixels. See $cpu for more info on SMP. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cpugauge</b></tt>
+            </b>
+            <tt><b>(cpuN) (height),(width)</b></tt>
+        </TPtag><TPitem>Elliptical gauge that shows CPU usage, height and
+        width are gauge's vertical and horizontal axis
+        respectively. See $cpu for more info on SMP. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cpugraph</b></tt>
+            </b>
+            <tt><b>(cpuN) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>CPU usage graph, with optional colours in hex,
+        minus the #. See $cpu for more info on SMP. Uses a
+        logarithmic scale (to see small numbers) when you use the
+        -l switch. Takes the switch '-t' to use a temperature
+        gradient, which makes the gradient values change depending
+        on the amplitude of a particular graph value (try it and
+        see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>curl</b></tt>
+            </b>
+            <tt><b>url (interval_in_minutes)</b></tt>
+        </TPtag><TPitem><para>Download data from URI using Curl at the
+            specified interval. The interval may be a floating
+            point value greater than 0, otherwise defaults to 15
+            minutes. Most useful when used in conjunction with Lua
+            and the Lua API. This object is threaded, and once a
+            thread is created it can't be explicitly destroyed.
+            One thread will run for each URI specified. You can use
+            any protocol that Curl supports.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>desktop</b></tt>
+            </b>
+        </TPtag><TPitem>Number of the desktop on which conky is running
+        or the message "Not running in X" if this is the case. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>desktop_name</b></tt>
+            </b>
+        </TPtag><TPitem>Name of the desktop on which conky is running or
+        the message "Not running in X" if this is the case. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>desktop_number</b></tt>
+            </b>
+        </TPtag><TPitem>Number of desktops or the message "Not running in
+        X" if this is the case. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>disk_protect</b></tt>
+            </b>
+            <tt><b>device</b></tt>
+        </TPtag><TPitem>Disk protection status, if supported (needs
+        kernel-patch). Prints either "frozen" or "free " (note the
+        padding). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskio</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays current disk IO. Device is optional, and
+        takes the form of sda for /dev/sda. Individual partitions
+        are allowed. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskio_read</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays current disk IO for reads. Device as in
+        diskio. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskio_write</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays current disk IO for writes. Device as in
+        diskio. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskiograph</b></tt>
+            </b>
+            <tt><b>(device) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Disk IO graph, colours defined in hex, minus the
+        #. If scale is non-zero, it becomes the scale for the
+        graph. Uses a logarithmic scale (to see small numbers) when
+        you use -l switch. Takes the switch '-t' to use a
+        temperature gradient, which makes the gradient values
+        change depending on the amplitude of a particular graph
+        value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskiograph_read</b></tt>
+            </b>
+            <tt><b>(device) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Disk IO graph for reads, colours defined in hex,
+        minus the #. If scale is non-zero, it becomes the scale for
+        the graph. Device as in diskio. Uses a logarithmic scale
+        (to see small numbers) when you use -l switch. Takes the
+        switch '-t' to use a temperature gradient, which makes the
+        gradient values change depending on the amplitude of a
+        particular graph value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>diskiograph_write</b></tt>
+            </b>
+            <tt><b>(device) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Disk IO graph for writes, colours defined in hex,
+        minus the #. If scale is non-zero, it becomes the scale for
+        the graph. Device as in diskio. Uses a logarithmic scale
+        (to see small numbers) when you use -l switch. Takes the
+        switch '-t' to use a temperature gradient, which makes the
+        gradient values change depending on the amplitude of a
+        particular graph value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>downspeed</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Download speed in suitable IEC units 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>downspeedf</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Download speed in KiB with one decimal 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>downspeedgraph</b></tt>
+            </b>
+            <tt><b>(netdev) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Download speed graph, colours defined in hex,
+        minus the #. If scale is non-zero, it becomes the scale for
+        the graph. Uses a logarithmic scale (to see small numbers)
+        when you use -l switch. Takes the switch '-t' to use a
+        temperature gradient, which makes the gradient values
+        change depending on the amplitude of a particular graph
+        value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>draft_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as draft in the specified
+        mailbox or mail spool if not. Only maildir type mailboxes
+        are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>else</b></tt>
+            </b>
+        </TPtag><TPitem>Text to show if any of the above are not true 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>endif</b></tt>
+            </b>
+            
+        </TPtag><TPitem>Ends an $if block. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>entropy_avail</b></tt>
+            </b>
+        </TPtag><TPitem>Current entropy available for crypto freaks 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>entropy_bar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Normalized bar of available entropy for crypto
+        freaks 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>entropy_perc</b></tt>
+            </b>
+        </TPtag><TPitem>Percentage of entropy available in comparison to
+        the poolsize 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>entropy_poolsize</b></tt>
+            </b>
+        </TPtag><TPitem>Total size of system entropy pool for crypto
+        freaks 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>eval</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem>Evaluates given string according to the rules of
+        TEXT interpretation, i.e. parsing any contained text object
+        specifications into their output, any occuring '$$' into a
+        single '$' and so on. The output is then being parsed
+        again. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>eve</b></tt>
+            </b>
+            <tt><b>api_userid api_key character_id</b></tt>
+        </TPtag><TPitem>Fetches your currently training skill from the
+        Eve Online API servers (http://www.eve-online.com/) and
+        displays the skill along with the remaining training time. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>exec</b></tt>
+            </b>
+            <tt><b>command</b></tt>
+        </TPtag><TPitem>Executes a shell command and displays the output
+        in conky. warning: this takes a lot more resources than
+        other variables. I'd recommend coding wanted behaviour in C
+        and posting a patch. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execbar</b></tt>
+            </b>
+            <tt><b>command</b></tt>
+        </TPtag><TPitem>Same as exec, except if the first value return is
+        a value between 0-100, it will use that number for a bar.
+        The size for bars can be controlled via the
+        default_bar_size config setting. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execgauge</b></tt>
+            </b>
+            <tt><b>command</b></tt>
+        </TPtag><TPitem>Same as exec, except if the first value returned
+        is a value between 0-100, it will use that number for a
+        gauge. The size for gauges can be controlled via the
+        default_gauge_size config setting. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execgraph</b></tt>
+            </b>
+            <tt><b>(-t) (-l) command</b></tt>
+        </TPtag><TPitem>Same as execbar, but graphs values. Uses a
+        logaritmic scale when the log option (-l switch) is given
+        (to see small numbers). Values still have to be between 0
+        and 100. The size for graphs can be controlled via the
+        default_graph_size config setting. Takes the switch '-t' to
+        use a temperature gradient, which makes the gradient values
+        change depending on the amplitude of a particular graph
+        value (try it and see). If -t or -l is your first argument,
+        you may need to preceed it by a space (' ').
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execi</b></tt>
+            </b>
+            <tt><b>interval command</b></tt>
+        </TPtag><TPitem>Same as exec but with specific interval. Interval
+        can't be less than update_interval in configuration. See
+        also $texeci
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execibar</b></tt>
+            </b>
+            <tt><b>interval command</b></tt>
+        </TPtag><TPitem>Same as execbar, except with an interval 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execigauge</b></tt>
+            </b>
+            <tt><b>interval command</b></tt>
+        </TPtag><TPitem>Same as execgauge, but takes an interval arg and
+        gauges values. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execigraph</b></tt>
+            </b>
+            <tt><b>interval (-t) (-l) command</b></tt>
+        </TPtag><TPitem>Same as execgraph, but takes an interval arg and
+        graphs values. If -t or -l is your first argument, you may
+        need to preceed it by a space (' '). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execp</b></tt>
+            </b>
+            <tt><b>command</b></tt>
+        </TPtag><TPitem>Executes a shell command and displays the output
+        in conky. warning: this takes a lot more resources than
+        other variables. I'd recommend coding wanted behaviour in C
+        and posting a patch. This differs from $exec in that it
+        parses the output of the command, so you can insert things
+        like ${color red}hi!${color} in your script and have it
+        correctly parsed by Conky. Caveats: Conky parses and
+        evaluates the output of $execp every time Conky loops, and
+        then destroys all the objects. If you try to use anything
+        like $execi within an $execp statement, it will
+        functionally run at the same interval that the $execp
+        statement runs, as it is created and destroyed at every
+        interval. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>execpi</b></tt>
+            </b>
+            <tt><b>interval command</b></tt>
+        </TPtag><TPitem>Same as execp but with specific interval.
+        Interval can't be less than update_interval in
+        configuration. Note that the output from the $execpi
+        command is still parsed and evaluated at every interval. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>flagged_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as flagged in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>font</b></tt>
+            </b>
+            <tt><b>(font)</b></tt>
+        </TPtag><TPitem>Specify a different font. This new font will
+        apply to the current line and everything following. You can
+        use a $font with no arguments to change back to the default
+        font (much like with $color) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>format_time</b></tt>
+            </b>
+            <tt><b>seconds format</b></tt>
+        </TPtag><TPitem>Format time given in seconds. This var only works when
+	the times_in_seconds configuration setting is on. Format is a string
+	that should start and end with a "-char. The "-chars are not
+	part of the output, \w,\d,\h,\m,\s,\(,\) and \\ are replaced by
+	weeks,days,hours,minutes,seconds,(,) and \. If you leave out a unit,
+	it's value will be expressed in the highest unite lower then the
+	one left out. Text between ()-chars will not be visible if a
+	replaced unit in this text is 0. If seconds is a decimal number
+	then you can see the numbers behind the point by using \S
+	followed by a number that specifies the amount of
+	digits behind the point that you want to see (maximum 9).
+	You can also place a 'x' behind \S so you have all digits behind
+	the point and no trailing zero's. (also maximum 9)
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>forwarded_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as forwarded in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>freq</b></tt>
+            </b>
+            <tt><b>(n)</b></tt>
+        </TPtag><TPitem>Returns CPU #n's frequency in MHz. CPUs are
+        counted from 1. If omitted, the parameter defaults to 1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>freq_g</b></tt>
+            </b>
+            <tt><b>(n)</b></tt>
+        </TPtag><TPitem>Returns CPU #n's frequency in GHz. CPUs are
+        counted from 1. If omitted, the parameter defaults to 1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_bar</b></tt>
+            </b>
+            <tt><b>(height),(width) fs</b></tt>
+        </TPtag><TPitem>Bar that shows how much space is used on a file
+        system. height is the height in pixels. fs is any file on
+        that file system. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_bar_free</b></tt>
+            </b>
+            <tt><b>(height),(width) fs</b></tt>
+        </TPtag><TPitem>Bar that shows how much space is free on a file
+        system. height is the height in pixels. fs is any file on
+        that file system. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_free</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>Free space on a file system available for users. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_free_perc</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>Free percentage of space on a file system
+        available for users. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_size</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>File system size. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_type</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>File system type. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_used</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>File system used space. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>fs_used_perc</b></tt>
+            </b>
+            <tt><b>(fs)</b></tt>
+        </TPtag><TPitem>Percent of file system used space. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>goto</b></tt>
+            </b>
+            <tt><b>x</b></tt>
+        </TPtag><TPitem>The next element will be printed at position 'x'.
+        
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>gw_iface</b></tt>
+            </b>
+        </TPtag><TPitem>Displays the default route's interface or
+        "multiple"/"none" accordingly. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>gw_ip</b></tt>
+            </b>
+        </TPtag><TPitem>Displays the default gateway's IP or
+        "multiple"/"none" accordingly. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>hddtemp</b></tt>
+            </b>
+            <tt><b>(dev)</b></tt>
+        </TPtag><TPitem>Displays temperature of a selected hard disk
+		drive as reported by the hddtemp daemon. Use hddtemp_host
+		and hddtemp_port to specify a host and port for all hddtemp
+		objects. If no dev parameter is given, the first disk returned
+		by the hddtemp daemon is used.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>head</b></tt>
+            </b>
+            <tt><b>logfile lines (next_check)</b></tt>
+        </TPtag><TPitem>Displays first N lines of supplied text file. The
+        file is checked every 'next_check' update. If next_check is
+        not supplied, Conky defaults to 2. Max of 30 lines can be
+        displayed, or until the text buffer is filled. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>hr</b></tt>
+            </b>
+            <tt><b>(height)</b></tt>
+        </TPtag><TPitem>Horizontal line, height is the height in pixels 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>hwmon</b></tt>
+            </b>
+            <tt><b>(dev) type n (factor offset)</b></tt>
+        </TPtag><TPitem>Hwmon sensor from sysfs (Linux 2.6). Parameter
+        dev may be omitted if you have only one hwmon device.
+        Parameter type is either 'in' or 'vol' meaning voltage;
+        'fan' meaning fan; 'temp' meaning temperature. Parameter n
+        is number of the sensor. See /sys/class/hwmon/ on your
+        local computer. The optional arguments 'factor' and
+        'offset' allow precalculation of the raw input, which is
+        being modified as follows: 'input = input * factor +
+        offset'. Note that they have to be given as decimal values
+        (i.e. contain at least one decimal place). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i2c</b></tt>
+            </b>
+            <tt><b>(dev) type n (factor offset)</b></tt>
+        </TPtag><TPitem>I2C sensor from sysfs (Linux 2.6). Parameter dev
+        may be omitted if you have only one I2C device. Parameter
+        type is either 'in' or 'vol' meaning voltage; 'fan' meaning
+        fan; 'temp' meaning temperature. Parameter n is number of
+        the sensor. See /sys/bus/i2c/devices/ on your local
+        computer. The optional arguments 'factor' and 'offset'
+        allow precalculation of the raw input, which is being
+        modified as follows: 'input = input * factor + offset'.
+        Note that they have to be given as decimal values (i.e.
+        contain at least one decimal place). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_ac_status</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays whether ac power is on, as listed in
+        /proc/i8k (translated to human-readable). Beware that this
+        is by default not enabled by i8k itself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_bios</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the bios version as listed in /proc/i8k. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_buttons_status</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the volume buttons status as listed in
+        /proc/i8k. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_cpu_temp</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the cpu temperature in Celsius, as
+        reported by /proc/i8k. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_left_fan_rpm</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the left fan's rate of rotation, in
+        revolutions per minute as listed in /proc/i8k. Beware, some
+        laptops i8k reports these fans in reverse order. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_left_fan_status</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the left fan status as listed in
+        /proc/i8k (translated to human-readable). Beware, some
+        laptops i8k reports these fans in reverse order. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_right_fan_rpm</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the right fan's rate of rotation, in
+        revolutions per minute as listed in /proc/i8k. Beware, some
+        laptops i8k reports these fans in reverse order. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_right_fan_status</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the right fan status as listed in
+        /proc/i8k (translated to human-readable). Beware, some
+        laptops i8k reports these fans in reverse order. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_serial</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays your laptop serial number as listed in
+        /proc/i8k. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>i8k_version</b></tt>
+            </b>
+            
+        </TPtag><TPitem>If running the i8k kernel driver for Inspiron
+        laptops, displays the version formatting of /proc/i8k. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>ibm_brightness</b></tt>
+            </b>
+        </TPtag><TPitem>If running the IBM ACPI, displays the brigtness
+        of the laptops's LCD (0-7). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>ibm_fan</b></tt>
+            </b>
+        </TPtag><TPitem>If running the IBM ACPI, displays the fan speed. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>ibm_temps</b></tt>
+            </b>
+            <tt><b>N</b></tt>
+        </TPtag><TPitem>If running the IBM ACPI, displays the
+        temperatures from the IBM temperature sensors (N=0..7)
+        Sensor 0 is on the CPU, 3 is on the GPU. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>ibm_volume</b></tt>
+            </b>
+        </TPtag><TPitem>If running the IBM ACPI, displays the "master"
+        volume, controlled by the volume keys (0-14). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>iconv_start</b></tt>
+            </b>
+            <tt><b>codeset_from codeset_to</b></tt>
+        </TPtag><TPitem>Convert text from one codeset to another using
+        GNU iconv. Needs to be stopped with iconv_stop. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>iconv_stop</b></tt>
+            </b>
+            
+        </TPtag><TPitem>Stop iconv codeset conversion. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_empty</b></tt>
+            </b>
+            <tt><b>(var)</b></tt>
+        </TPtag><TPitem>if conky variable VAR is empty, display
+        everything between $if_empty and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_existing</b></tt>
+            </b>
+            <tt><b>file (string)</b></tt>
+        </TPtag><TPitem>if FILE exists, display everything between
+        if_existing and the matching $endif. The optional second
+        parameter checks for FILE containing the specified string
+        and prints everything between $if_existing and the matching
+        $endif. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_gw</b></tt>
+            </b>
+        </TPtag><TPitem>if there is at least one default gateway, display
+        everything between $if_gw and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_match</b></tt>
+            </b>
+            <tt><b>expression</b></tt>
+        </TPtag><TPitem>Evaluates the given boolean expression, printing
+        everything between $if_match and the matching $endif
+        depending on whether the evaluation returns true or not.
+        Valid expressions consist of a left side, an operator and a
+        right side. Left and right sides are being parsed for
+        contained text objects before evaluation. Recognised left
+        and right side types are: 
+        <para>
+            <b>double</b>Argument consists of only
+            digits and a single dot.<br/>
+            <b>long</b>Argument consists of only
+            digits.<br/>
+            <b>string</b>Argument is enclosed in
+            quotation marks (")</para>Valid operands are: '&gt;', '&lt;', '&gt;=',
+        '&lt;=', '==', '!='. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_mixer_mute</b></tt>
+            </b>
+            <tt><b>(mixer)</b></tt>
+        </TPtag><TPitem>If mixer exists, display everything between
+        $if_mixer_mute and the matching $endif. If no mixer is
+        specified, "Vol" is used. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_mounted</b></tt>
+            </b>
+            <tt><b>(mountpoint)</b></tt>
+        </TPtag><TPitem>if MOUNTPOINT is mounted, display everything
+        between $if_mounted and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_mpd_playing</b></tt>
+            </b>
+        </TPtag><TPitem>if mpd is playing or paused, display everything
+        between $if_mpd_playing and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_running</b></tt>
+            </b>
+            <tt><b>(process)</b></tt>
+        </TPtag><TPitem>if PROCESS is running, display everything
+        $if_running and the matching $endif. This uses the
+        ``pidof'' command, so the -x switch is also supported. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_smapi_bat_installed</b></tt>
+            </b>
+            <tt><b>(INDEX)</b></tt>
+        </TPtag><TPitem>when using smapi, if the battery with index INDEX
+        is installed, display everything between
+        $if_smapi_bat_installed and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_up</b></tt>
+            </b>
+            <tt><b>(interface)</b></tt>
+        </TPtag><TPitem>if INTERFACE exists and is up, display everything
+        between $if_up and the matching $endif 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_updatenr</b></tt>
+            </b>
+            <tt><b>(updatenr)</b></tt>
+        </TPtag><TPitem>If it's the UPDATENR-th time that conky updates,
+        display everything between $if_updatenr and the matching
+        $endif. The counter resets when the highest UPDATENR is
+        reached. Example : "{$if_updatenr 1}foo$endif{$if_updatenr
+        2}bar$endif{$if_updatenr 4}$endif" shows foo 25% of the
+        time followed by bar 25% of the time followed by nothing
+        the other half of the time. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_xmms2_connected</b></tt>
+            </b>
+        </TPtag><TPitem>Display everything between $if_xmms2_connected
+        and the matching $endif if xmms2 is running. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>image</b></tt>
+            </b>
+            <tt><b>&lt;path to image&gt; (-p x,y) (-s WxH) (-n)
+            (-f interval)</b></tt>
+        </TPtag><TPitem>Renders an image from the path specified using
+        Imlib2. Takes 4 optional arguments: a position, a size, a
+        no-cache switch, and a cache flush interval. Changing the
+        x,y position will move the position of the image, and
+        changing the WxH will scale the image. If you specify the
+        no-cache flag (-n), the image will not be cached.
+        Alternately, you can specify the -f int switch to specify a
+        cache flust interval for a particular image. Example:
+        ${image /home/brenden/cheeseburger.jpg -p 20,20 -s 200x200}
+        will render 'cheeseburger.jpg' at (20,20) scaled to 200x200
+        pixels. Conky does not make any attempt to adjust the
+        position (or any other formatting) of images, they are just
+        rendered as per the arguments passed. The only reason
+        $image is part of the TEXT section, is to allow for runtime
+        modifications, through $execp $lua_parse, or some other
+        method. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imap_messages</b></tt>
+            </b>
+            <tt><b>(args)</b></tt>
+        </TPtag><TPitem>Displays the number of messages in your global
+        IMAP inbox by default. You can define individual IMAP
+        inboxes separately by passing arguments to this object.
+        Arguments are: "host user pass [-i interval (in seconds)]
+        [-f 'folder'] [-p port] [-e 'command'] [-r retries]". Default
+        port is 143, default folder is 'INBOX', default interval is
+        5 minutes, and default number of retries before giving up
+        is 5. If the password is supplied as '*', you will be
+        prompted to enter the password when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>imap_unseen</b></tt>
+            </b>
+            <tt><b>(args)</b></tt>
+        </TPtag><TPitem>Displays the number of unseen messages in your
+        global IMAP inbox by default. You can define individual
+        IMAP inboxes separately by passing arguments to this
+        object. Arguments are: "host user pass [-i interval (in
+        seconds)] [-f 'folder'] [-p port] [-e 'command'] [-r retries]".
+        Default port is 143, default folder is 'INBOX', default
+        interval is 5 minutes, and default number of retries before
+        giving up is 5. If the password is supplied as '*', you
+        will be prompted to enter the password when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>include</b></tt>
+            </b>
+            <tt><b>path</b></tt>
+        </TPtag><TPitem><para>Loads the configfile at path, places the
+            configsettings behind the configsettings in the orginal
+            config and places the vars where the includevar
+            stood.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>ioscheduler</b></tt>
+            </b>
+            <tt><b>disk</b></tt>
+        </TPtag><TPitem>Prints the current ioscheduler used for the given
+        disk name (i.e. e.g. "hda" or "sdb") 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>kernel</b></tt>
+            </b>
+        </TPtag><TPitem>Kernel version 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>laptop_mode</b></tt>
+            </b>
+        </TPtag><TPitem>The value of /proc/sys/vm/laptop_mode 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lines</b></tt>
+            </b>
+            <tt><b>textfile</b></tt>
+        </TPtag><TPitem>Displays the number of lines in the given file 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>loadavg</b></tt>
+            </b>
+            <tt><b>(1|2|3)</b></tt>
+        </TPtag><TPitem>System load average, 1 is for past 1 minute, 2
+	for past 5 minutes and 3 for past 15 minutes. Without argument, prints
+	all three values separated by whitespace.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>loadgraph</b></tt>
+            </b>
+            <tt><b>(height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Load1 average graph, similar to xload, with
+        optional colours in hex, minus the #. Uses a logarithmic
+        scale (to see small numbers) when you use the -l switch.
+        Takes the switch '-t' to use a temperature gradient, which
+        makes the gradient values change depending on the amplitude
+        of a particular graph value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua</b></tt>
+            </b>
+            <tt><b>function_name (function parameters)</b></tt>
+        </TPtag><TPitem>Executes a Lua function with given parameters,
+        then prints the returned string. See also 'lua_load' on how
+        to load scripts. Conky puts 'conky_' in front of
+        function_name to prevent accidental calls to the wrong
+        function unless you put you place 'conky_' in front of it
+        yourself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_bar</b></tt>
+            </b>
+            <tt><b>(height, width) function_name (function
+            parameters)</b></tt>
+        </TPtag><TPitem>Executes a Lua function with given parameters and
+        draws a bar. Expects result value to be an integer between
+        0 and 100. See also 'lua_load' on how to load scripts.
+        Conky puts 'conky_' in front of function_name to prevent
+        accidental calls to the wrong function unless you put you
+        place 'conky_' in front of it yourself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_gauge</b></tt>
+            </b>
+            <tt><b>(height, width) function_name (function
+            parameters)</b></tt>
+        </TPtag><TPitem>Executes a Lua function with given parameters and
+        draws a gauge. Expects result value to be an integer
+        between 0 and 100. See also 'lua_load' on how to load
+        scripts. Conky puts 'conky_' in front of function_name to
+        prevent accidental calls to the wrong function unless you
+        put you place 'conky_' in front of it yourself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_graph</b></tt>
+            </b>
+            <tt><b>function_name (height),(width) (gradient colour
+            1) (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Executes a Lua function with and draws a graph.
+        Expects result value to be any number, and by default will
+        scale to show the full range. See also 'lua_load' on how to
+        load scripts. Takes the switch '-t' to use a temperature
+        gradient, which makes the gradient values change depending
+        on the amplitude of a particular graph value (try it and
+        see). Conky puts 'conky_' in front of function_name to
+        prevent accidental calls to the wrong function unless you
+        put you place 'conky_' in front of it yourself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>lua_parse</b></tt>
+            </b>
+            <tt><b>function_name (function parameters)</b></tt>
+        </TPtag><TPitem>Executes a Lua function with given parameters as
+        per $lua, then parses and prints the result value as per
+        the syntax for Conky's TEXT section. See also 'lua_load' on
+        how to load scripts. Conky puts 'conky_' in front of
+        function_name to prevent accidental calls to the wrong
+        function unless you put you place 'conky_' in front of it
+        yourself. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>machine</b></tt>
+            </b>
+        </TPtag><TPitem>Machine, i686 for example 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mails</b></tt>
+            </b>
+            <tt><b>(mailbox)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Mail count in the specified mailbox or your mail
+        spool if not. Both mbox and maildir type mailboxes are
+        supported. You can use a program like fetchmail to get
+        mails from some server using your favourite protocol. See
+        also new_mails. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mboxscan</b></tt>
+            </b>
+            <tt><b>(-n number of messages to print) (-fw from
+            width) (-sw subject width) mbox</b></tt>
+        </TPtag><TPitem>Print a summary of recent messages in an mbox
+        format mailbox. mbox parameter is the filename of the
+        mailbox (can be encapsulated using '"', ie. ${mboxscan -n
+        10 "/home/brenden/some box"} 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mem</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of memory in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>membar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Bar that shows amount of memory in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memeasyfree</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of free memory including the memory that
+        is very easily freed (buffers/cache) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memfree</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of free memory 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memgauge</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Gauge that shows amount of memory in use (see
+        cpugauge) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memgraph</b></tt>
+            </b>
+            <tt><b>(height),(width) (gradient colour 1) (gradient
+            colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Memory usage graph. Uses a logarithmic scale (to
+        see small numbers) when you use the -l switch. Takes the
+        switch '-t' to use a temperature gradient, which makes the
+        gradient values change depending on the amplitude of a
+        particular graph value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memmax</b></tt>
+            </b>
+        </TPtag><TPitem>Total amount of memory 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>memperc</b></tt>
+            </b>
+        </TPtag><TPitem>Percentage of memory in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixer</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Prints the mixer value as reported by the OS.
+        On Linux, this variable uses the OSS emulation, so you
+        need the proper kernel module loaded.
+        Default mixer is "Vol", but you can specify one of the
+        available OSS controls: "Vol", "Bass", "Trebl", "Synth",
+        "Pcm", "Spkr", "Line", "Mic", "CD", "Mix", "Pcm2 ", "Rec",
+        "IGain", "OGain", "Line1", "Line2", "Line3", "Digital1",
+        "Digital2", "Digital3", "PhoneIn", "PhoneOut", "Video",
+        "Radio" and "Monitor".
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixerbar</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays mixer value in a bar as reported by the
+        OS. See docs for $mixer for details on arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixerl</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Prints the left channel mixer value as reported
+        by the OS. See docs for $mixer for details on arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixerlbar</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays the left channel mixer value in a bar as
+        reported by the OS. See docs for $mixer for details on
+        arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixerr</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Prints the right channel mixer value as reported
+        by the OS. See docs for $mixer for details on arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mixerrbar</b></tt>
+            </b>
+            <tt><b>(device)</b></tt>
+        </TPtag><TPitem>Displays the right channel mixer value in a bar
+        as reported by the OS. See docs for $mixer for details on
+        arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_album</b></tt>
+            </b>
+        </TPtag><TPitem>Album of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_artist</b></tt>
+            </b>
+        </TPtag><TPitem>Artist of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_bitrate</b></tt>
+            </b>
+        </TPtag><TPitem>Bitrate in the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_curtime</b></tt>
+            </b>
+        </TPtag><TPitem>Current time of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_file</b></tt>
+            </b>
+        </TPtag><TPitem>File name of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_rate</b></tt>
+            </b>
+        </TPtag><TPitem>Rate of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_song</b></tt>
+            </b>
+        </TPtag><TPitem>The current song name being played in MOC. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_state</b></tt>
+            </b>
+        </TPtag><TPitem>Current state of MOC; playing, stopped etc. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_timeleft</b></tt>
+            </b>
+        </TPtag><TPitem>Time left in the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_title</b></tt>
+            </b>
+        </TPtag><TPitem>Title of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>moc_totaltime</b></tt>
+            </b>
+        </TPtag><TPitem>Total length of the current MOC song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>monitor</b></tt>
+            </b>
+        </TPtag><TPitem>Number of the monitor on which conky is running
+        or the message "Not running in X" if this is the case. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>monitor_number</b></tt>
+            </b>
+        </TPtag><TPitem>Number of monitors or the message "Not running in
+        X" if this is the case. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_album</b></tt>
+            </b>
+        </TPtag><TPitem>Album in current MPD song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_artist</b></tt>
+            </b>
+        </TPtag><TPitem>Artist in current MPD song must be enabled at
+        compile 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_bar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Bar of mpd's progress 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_bitrate</b></tt>
+            </b>
+        </TPtag><TPitem>Bitrate of current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_date</b></tt>
+            </b>
+        </TPtag><TPitem>Date of current song
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_elapsed</b></tt>
+            </b>
+        </TPtag><TPitem>Song's elapsed time 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_file</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the file name of the current MPD song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_length</b></tt>
+            </b>
+        </TPtag><TPitem>Song's length 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_name</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the MPD name field 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_percent</b></tt>
+            </b>
+        </TPtag><TPitem>Percent of song's progress 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_random</b></tt>
+            </b>
+        </TPtag><TPitem>Random status (On/Off) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_repeat</b></tt>
+            </b>
+        </TPtag><TPitem>Repeat status (On/Off) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_smart</b></tt>
+            </b>
+            <tt><b>(max length)</b></tt>
+        </TPtag><TPitem>Prints the song name in either the form "artist -
+        title" or file name, depending on whats available 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_status</b></tt>
+            </b>
+        </TPtag><TPitem>Playing, stopped, et cetera. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_title</b></tt>
+            </b>
+            <tt><b>(max length)</b></tt>
+        </TPtag><TPitem>Title of current MPD song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_track</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the MPD track field 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>mpd_vol</b></tt>
+            </b>
+        </TPtag><TPitem>MPD's volume 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>nameserver</b></tt>
+            </b>
+            <tt><b>(index)</b></tt>
+        </TPtag><TPitem>Print a nameserver from /etc/resolv.conf. Index
+        starts at and defaults to 0. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>new_mails</b></tt>
+            </b>
+            <tt><b>(mailbox)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Unread mail count in the specified mailbox or
+        mail spool if not. Both mbox and maildir type mailboxes are
+        supported. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>nodename</b></tt>
+            </b>
+        </TPtag><TPitem>Hostname 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>nodename_short</b></tt>
+            </b>
+        </TPtag><TPitem>Short hostname (same as 'hostname -s' shell command).
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>nvidia</b></tt>
+            </b>
+            <tt><b>threshold</b></tt>
+            <tt><b>temp</b></tt>
+            <tt><b>ambient</b></tt>
+            <tt><b>gpufreq</b></tt>
+            <tt><b>memfreq</b></tt>
+            <tt><b>imagequality</b></tt>
+        </TPtag><TPitem>Nvidia graficcard support for the XNVCtrl
+        library. Each option can be shortened to the least
+        significant part. Temperatures are printed as float, all
+        other values as integer. 
+        <para>
+		<b>threshold</b>
+		<tt><b>The thresholdtemperature at
+			which the gpu slows down</b></tt>
+            <br/>
+		<b>temp</b>
+		<tt><b>Gives the gpu current
+			temperature</b></tt>
+            <br/>
+                <b>ambient</b>
+                <tt><b>Gives current air temperature near GPU
+                case</b></tt>
+            <br/>
+                <b>gpufreq</b>
+                <tt><b>Gives the current gpu frequency</b></tt>
+            <br/>
+                <b>memfreq</b>
+                <tt><b>Gives the current mem frequency</b></tt>
+            <br/>
+                <b>imagequality</b>
+                <tt><b>Which imagequality should be chosen by
+                OpenGL applications</b></tt>
+            </para><para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>offset</b></tt>
+            </b>
+            <tt><b>(pixels)</b></tt>
+        </TPtag><TPitem>Move text over by N pixels. See also $voffset. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>outlinecolor</b></tt>
+            </b>
+            <tt><b>(color)</b></tt>
+        </TPtag><TPitem>Change outline color 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pb_battery</b></tt>
+            </b>
+            <tt><b>item</b></tt>
+        </TPtag><TPitem>If running on Apple powerbook/ibook, display
+        information on battery status. The item parameter
+        specifies, what information to display. Exactly one item
+        must be specified. Valid items are: 
+        <para>
+                <b>status</b>
+                <tt><b>Display if battery is fully charged,
+                charging, discharging or absent (running on
+                AC)</b></tt>
+            <br/>
+                <b>percent</b>
+                <tt><b>Display charge of battery in percent, if
+                charging or discharging. Nothing will be displayed,
+                if battery is fully charged or absent.</b></tt>
+            <br/>
+                <b>time</b>
+                <tt><b>Display the time remaining until the
+                battery will be fully charged or discharged at
+                current rate. Nothing is displayed, if battery is
+                absent or if it's present but fully charged and not
+                discharging.</b></tt>
+            </para><para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_chroot</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Directory used as rootdirectory by the process
+	(this will be "/" unless the process did a chroot syscall)
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_cmdline</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Command line this process was invoked with
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_cwd</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Current working directory of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_environ</b></tt>
+            </b>
+            <tt><b>pid varname</b></tt>
+        </TPtag><TPitem>Contents of a environment-var of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_environ_list</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>List of environment-vars that the process can see
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_exe</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Path to executed command that started the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_nice</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The nice value of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_openfiles</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>List of files that the process has open
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_parent</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The pid of the parent of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_priority</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The priority of the process (see 'priority' in "man 5 proc")
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_read</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Total number of bytes read by the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_state</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>State of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_state_short</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>One of the chars in "RSDZTW" representing the state
+	of the process where R is running, S is sleeping in an
+	interruptible wait, D is waiting in uninterruptible disk sleep,
+	Z is zombie, T is traced or stopped (on a signal), and W is paging
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_stderr</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Filedescriptor binded to the STDERR of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_stdin</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Filedescriptor binded to the STDIN of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_stdout</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Filedescriptor binded to the STDOUT of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_threads</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Number of threads in process containing this thread
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_thread_list</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>List with pid's from threads from this process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_time_kernelmode</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Amount of time that the process has been scheduled in kernel mode in seconds
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_time_usermode</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Amount of time that the process has been scheduled in user mode in seconds
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_time</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Sum of $pid_time_kernelmode and $pid_time_usermode
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_uid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The real uid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_euid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The effective uid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_suid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The saved set uid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_fsuid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The file system uid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_gid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The real gid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_egid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The effective gid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_sgid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The saved set gid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_fsgid</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>The file system gid of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmpeak</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Peak virtual memory size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmsize</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Virtual memory size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmlck</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Locked memory size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmhwm</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Peak resident set size ("high water mark") of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmrss</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Resident set size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmdata</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Data segment size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmstk</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Stack segment size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmexe</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Text segment size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmlib</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Shared library code size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_vmpte</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Page table entries size of the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pid_write</b></tt>
+            </b>
+            <tt><b>pid</b></tt>
+        </TPtag><TPitem>Total number of bytes written by the process
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>platform</b></tt>
+            </b>
+            <tt><b>(dev) type n (factor offset)</b></tt>
+        </TPtag><TPitem>Platform sensor from sysfs (Linux 2.6). Parameter
+        dev may be omitted if you have only one platform device.
+        Platform type is either 'in' or 'vol' meaning voltage;
+        'fan' meaning fan; 'temp' meaning temperature. Parameter n
+        is number of the sensor. See /sys/bus/platform/devices/ on
+        your local computer. The optional arguments 'factor' and
+        'offset' allow precalculation of the raw input, which is
+        being modified as follows: 'input = input * factor +
+        offset'. Note that they have to be given as decimal values
+        (i.e. contain at least one decimal place). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pop3_unseen</b></tt>
+            </b>
+            <tt><b>(args)</b></tt>
+        </TPtag><TPitem>Displays the number of unseen messages in your
+        global POP3 inbox by default. You can define individual
+        POP3 inboxes separately by passing arguments to this
+        object. Arguments are: "host user pass [-i interval (in
+        seconds)] [-p port] [-e 'command'] [-r retries]". Default
+        port is 110, default interval is 5 minutes, and default
+        number of retries before giving up is 5. If the password is
+        supplied as '*', you will be prompted to enter the password
+        when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pop3_used</b></tt>
+            </b>
+            <tt><b>(args)</b></tt>
+        </TPtag><TPitem>Displays the amount of space (in MiB, 2^20) used
+        in your global POP3 inbox by default. You can define
+        individual POP3 inboxes separately by passing arguments to
+        this object. Arguments are: "host user pass [-i interval
+        (in seconds)] [-p port] [-e 'command'] [-r retries]". Default
+        port is 110, default interval is 5 minutes, and default
+        number of retries before giving up is 5. If the password is
+        supplied as '*', you will be prompted to enter the password
+        when Conky starts. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>pre_exec</b></tt>
+            </b>
+            <tt><b>shell command</b></tt>
+        </TPtag><TPitem>Executes a shell command one time before conky
+        displays anything and puts output as text. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>processes</b></tt>
+            </b>
+        </TPtag><TPitem>Total processes (sleeping and running) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>read_tcp</b></tt>
+            </b>
+            <tt><b>(host) port</b></tt>
+        </TPtag><TPitem>Connects to a tcp port on a host (default is
+        localhost), reads every char available at the moment and
+        shows them. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>replied_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as replied in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>rss</b></tt>
+            </b>
+            <tt><b>uri interval_in_minutes action (num_par
+            (spaces_in_front))</b></tt>
+        </TPtag><TPitem><para>Download and parse RSS feeds. The interval may be
+            a floating point value greater than 0, otherwise
+            defaults to 15 minutes. Action may be one of the
+            following: feed_title, item_title (with num par),
+            item_desc (with num par) and item_titles (when using
+            this action and spaces_in_front is given conky places
+            that many spaces in front of each item). This object is
+            threaded, and once a thread is created it can't be
+            explicitly destroyed. One thread will run for each URI
+            specified. You can use any protocol that Curl
+            supports.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>running_processes</b></tt>
+            </b>
+        </TPtag><TPitem>Running processes (not sleeping), requires Linux
+        2.6 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>running_threads</b></tt>
+            </b>
+        </TPtag><TPitem>Number of running (runnable) threads. Linux only.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>scroll</b></tt>
+            </b>
+            <tt><b>length (step) text</b></tt>
+        </TPtag><TPitem>Scroll 'text' by 'step' characters showing
+        'length' number of characters at the same time. The text
+        may also contain variables. 'step' is optional and defaults
+        to 1 if not set. If a var creates output on multiple lines
+        then the lines are placed behind each other separated with
+        a '|'-sign. If you change the textcolor inside $scroll it
+        will automatically have it's old value back at the end of
+        $scroll. The end and the start of text will be separated by
+        'length' number of spaces. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>seen_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as seen in the specified
+        mailbox or mail spool if not. Only maildir type mailboxes
+        are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>shadecolor</b></tt>
+            </b>
+            <tt><b>(color)</b></tt>
+        </TPtag><TPitem>Change shading color 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>smapi</b></tt>
+            </b>
+            <tt><b>(ARGS)</b></tt>
+        </TPtag><TPitem>when using smapi, display contents of the
+        /sys/devices/platform/smapi directory. ARGS are either
+        '(FILENAME)' or 'bat (INDEX) (FILENAME)' to display the
+        corresponding files' content. This is a very raw method of
+        accessing the smapi values. When available, better use one
+        of the smapi_* variables instead. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>smapi_bat_bar</b></tt>
+            </b>
+            <tt><b>(INDEX),(height),(width)</b></tt>
+        </TPtag><TPitem>when using smapi, display the remaining capacity
+        of the battery with index INDEX as a bar. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>smapi_bat_perc</b></tt>
+            </b>
+            <tt><b>(INDEX)</b></tt>
+        </TPtag><TPitem>when using smapi, display the remaining capacity
+        in percent of the battery with index INDEX. This is a
+        separate variable because it supports the 'use_spacer'
+        configuration option. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>smapi_bat_power</b></tt>
+            </b>
+            <tt><b>INDEX</b></tt>
+        </TPtag><TPitem>when using smapi, display the current power of
+        the battery with index INDEX in watt. This is a separate
+        variable because the original read out value is being
+        converted from mW. The sign of the output reflects charging
+        (positive) or discharging (negative) state. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>smapi_bat_temp</b></tt>
+            </b>
+            <tt><b>INDEX</b></tt>
+        </TPtag><TPitem>when using smapi, display the current temperature
+        of the battery with index INDEX in degree Celsius. This is
+        a separate variable because the original read out value is
+        being converted from milli degree Celsius. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>sony_fanspeed</b></tt>
+            </b>
+        </TPtag><TPitem>Displays the Sony VAIO fanspeed information if
+        sony-laptop kernel support is enabled. Linux only. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>stippled_hr</b></tt>
+            </b>
+            <tt><b>(space)</b></tt>
+        </TPtag><TPitem>Stippled (dashed) horizontal line 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>swap</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of swap in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>swapbar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Bar that shows amount of swap in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>swapfree</b></tt>
+            </b>
+        </TPtag><TPitem>Amount of free swap 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>swapmax</b></tt>
+            </b>
+        </TPtag><TPitem>Total amount of swap 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>swapperc</b></tt>
+            </b>
+        </TPtag><TPitem>Percentage of swap in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>sysname</b></tt>
+            </b>
+        </TPtag><TPitem>System name, Linux for example 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>tab</b></tt>
+            </b>
+            <tt><b>(width, (start))</b></tt>
+        </TPtag><TPitem>Puts a tab of the specified width, starting from
+        column 'start'. The unit is pixels for both arguments. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>tail</b></tt>
+            </b>
+            <tt><b>logfile lines (next_check)</b></tt>
+        </TPtag><TPitem>Displays last N lines of supplied text file. The
+        file is checked every 'next_check' update. If next_check is
+        not supplied, Conky defaults to 2. Max of 30 lines can be
+        displayed, or until the text buffer is filled. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>tcp_portmon</b></tt>
+            </b>
+            <tt><b>port_begin port_end item (index)</b></tt>
+        </TPtag><TPitem><para>TCP port (both IPv6 and IPv4) monitor for
+            specified local ports. Port numbers must be in
+            the range 1 to 65535. Valid items are:</para><para>
+                    <b>count</b>
+                    <tt><b>Total number of connections in the
+                    range</b></tt>
+                <br/>
+                    <b>rip</b>
+                    <tt><b>Remote ip address</b></tt>
+                <br/>
+                    <b>rhost</b>
+                    <tt><b>Remote host name</b></tt>
+                <br/>
+                    <b>rport</b>
+                    <tt><b>Remote port number</b></tt>
+                <br/>
+                    <b>rservice</b>
+                    <tt><b>Remote service name from
+                    /etc/services</b></tt>
+                <br/>
+                    <b>lip</b>
+                    <tt><b>Local ip address</b></tt>
+                <br/>
+                    <b>lhost</b>
+                    <tt><b>Local host name</b></tt>
+                <br/>
+                    <b>lport</b>
+                    <tt><b>Local port number</b></tt>
+                <br/>
+                    <b>lservice</b>
+                    <tt><b>Local service name from
+                    /etc/services</b></tt>
+                </para><para>The connection index provides you with access to
+            each connection in the port monitor. The monitor will
+            return information for index values from 0 to n-1
+            connections. Values higher than n-1 are simply ignored.
+            For the "count" item, the connection index must be
+            omitted. It is required for all other items.</para><para>Examples:</para><para>
+                    <b>${tcp_portmon 6881 6999
+                    count}</b>
+                    <tt><b>Displays the number of connections in
+                    the bittorrent port range</b></tt>
+                <br/>
+                    <b>${tcp_portmon 22 22 rip 0}</b>
+                    <tt><b>Displays the remote host ip of the
+                    first sshd connection</b></tt>
+                <br/>
+                    <b>${tcp_portmon 22 22 rip 9}</b>
+                    <tt><b>Displays the remote host ip of the
+                    tenth sshd connection</b></tt>
+                <br/>
+                    <b>${tcp_portmon 1 1024 rhost
+                    0}</b>
+                    <tt><b>Displays the remote host name of the
+                    first connection on a privileged port</b></tt>
+                <br/>
+                    <b>${tcp_portmon 1 1024 rport
+                    4}</b>
+                    <tt><b>Displays the remote host port of the
+                    fifth connection on a privileged port</b></tt>
+                <br/>
+                    <b>${tcp_portmon 1 65535 lservice
+                    14}</b>
+                    <tt><b>Displays the local service name of the
+                    fifteenth connection in the range of all
+                    ports</b></tt>
+                </para><para>Note that port monitor variables which share the
+            same port range actually refer to the same monitor, so
+            many references to a single port range for different
+            items and different indexes all use the same monitor
+            internally. In other words, the program avoids creating
+            redundant monitors.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>templateN</b></tt>
+            </b>
+            <tt><b>(arg1)</b></tt>
+            <tt><b>(arg2)</b></tt>
+            <tt><b>(arg3 ...)</b></tt>
+        </TPtag><TPitem><para>Evaluate the content of the templateN
+            configuration variable (where N is a value between 0
+            and 9, inclusively), applying substitutions as
+            described in the documentation of the corresponding
+            configuration variable. The number of arguments is
+            optional, but must match the highest referred index in
+            the template. You can use the same special sequences in
+            each argument as the ones valid for a template
+            definition, e.g. to allow an argument to contain a
+            whitespace. Also simple nesting of templates is
+            possible this way.</para><para>Here are some examples of template
+            definitions:</para><para>template0 $\1\2<br/>template1 \1: ${fs_used \2} / ${fs_size
+                \2}<br/>template2 \1 \2</para><para>The following list shows sample usage of the
+            templates defined above, with the equivalent syntax
+            when not using any template at all:</para><table><tgroup cols="2"><thead><row rowsep="1"><entry>using template</entry><entry>same without template</entry></row></thead><tbody><row><entry>${template0 node name}</entry><entry>$nodename</entry></row><row><entry>${template1 root /}</entry><entry>root: ${fs_free /} / ${fs_size
+                            /}</entry></row><row><entry>
+                                ${template1
+                                ${template2\ disk\ root}
+                                /}
+                            </entry><entry>
+                                disk root:
+                                ${fs_free /} / ${fs_size
+                                /}
+                            </entry></row></tbody></tgroup></table></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>texeci</b></tt>
+            </b>
+            <tt><b>interval command</b></tt>
+        </TPtag><TPitem>Runs a command at an interval inside a thread and
+        displays the output. Same as $execi, except the command is
+        run inside a thread. Use this if you have a slow script to
+        keep Conky updating. You should make the interval slightly
+        longer then the time it takes your script to execute. For
+        example, if you have a script that take 5 seconds to
+        execute, you should make the interval at least 6 seconds.
+        See also $execi. This object will clean up the thread when
+        it is destroyed, so it can safely be used in a nested
+        fashion, though it may not produce the desired behaviour if
+        used this way. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>threads</b></tt>
+            </b>
+        </TPtag><TPitem>Total threads
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>time</b></tt>
+            </b>
+            <tt><b>(format)</b></tt>
+        </TPtag><TPitem>Local time, see man strftime to get more
+        information about format 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>to_bytes</b></tt>
+            </b>
+            <tt><b>size</b></tt>
+        </TPtag><TPitem>If 'size' is a number followed by a size-unit
+        (kilobyte,mb,GiB,...) then it converts the size to bytes
+        and shows it without unit, otherwise it just shows 'size'. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top</b></tt>
+            </b>
+            <tt><b>type num</b></tt>
+        </TPtag><TPitem>This takes arguments in the form:top (name)
+        (number) Basically, processes are ranked from highest to
+        lowest in terms of cpu usage, which is what (num)
+        represents. The types are: "name", "pid", "cpu", "mem",
+        "mem_res", "mem_vsize", "time", "uid", "user", "io_perc", "io_read" and
+        "io_write". There can be a max of 10 processes listed. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top_io</b></tt>
+            </b>
+            <tt><b>type num</b></tt>
+        </TPtag><TPitem>Same as top, except sorted by the amount of I/O
+        the process has done during the update interval 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top_mem</b></tt>
+            </b>
+            <tt><b>type num</b></tt>
+        </TPtag><TPitem>Same as top, except sorted by mem usage instead
+        of cpu 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>top_time</b></tt>
+            </b>
+            <tt><b>type num</b></tt>
+        </TPtag><TPitem>Same as top, except sorted by total CPU time
+        instead of current CPU usage 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>totaldown</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Total download, overflows at 4 GB on Linux with
+        32-bit arch and there doesn't seem to be a way to know how
+        many times it has already done that before conky has
+        started. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>totalup</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Total upload, this one too, may overflow 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>trashed_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails marked as trashed in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>tztime</b></tt>
+            </b>
+            <tt><b>(timezone (format))</b></tt>
+        </TPtag><TPitem>Local time for specified timezone, see man
+        strftime to get more information about format. The timezone
+        argument is specified in similar fashion as TZ environment
+        variable. For hints, look in /usr/share/zoneinfo. e.g.
+        US/Pacific, Europe/Zurich, etc. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>gid_name</b></tt>
+            </b>
+            <tt><b>gid</b></tt>
+        </TPtag><TPitem>Name of group with this gid
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>uid_name</b></tt>
+            </b>
+            <tt><b>uid</b></tt>
+        </TPtag><TPitem>Username of user with this uid
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>unflagged_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails not marked as flagged in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>unforwarded_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails not marked as forwarded in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>unreplied_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of mails not marked as replied in the
+        specified mailbox or mail spool if not. Only maildir type
+        mailboxes are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>unseen_mails</b></tt>
+            </b>
+            <tt><b>(maildir)</b></tt>
+            <tt><b>(interval)</b></tt>
+        </TPtag><TPitem>Number of new or unseen mails in the specified
+        mailbox or mail spool if not. Only maildir type mailboxes
+        are supported, mbox type will return -1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>updates</b></tt>
+            </b>
+            <tt><b>Number of updates</b></tt>
+        </TPtag><TPitem>for debugging 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>upspeed</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Upload speed in suitable IEC units 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>upspeedf</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Upload speed in KiB with one decimal 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>upspeedgraph</b></tt>
+            </b>
+            <tt><b>(netdev) (height),(width) (gradient colour 1)
+            (gradient colour 2) (scale) (-t) (-l)</b></tt>
+        </TPtag><TPitem>Upload speed graph, colours defined in hex, minus
+        the #. If scale is non-zero, it becomes the scale for the
+        graph. Uses a logarithmic scale (to see small numbers) when
+        you use the -l switch. Takes the switch '-t' to use a
+        temperature gradient, which makes the gradient values
+        change depending on the amplitude of a particular graph
+        value (try it and see). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>uptime</b></tt>
+            </b>
+        </TPtag><TPitem>Uptime 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>uptime_short</b></tt>
+            </b>
+        </TPtag><TPitem>Uptime in a shorter format 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>user_names</b></tt>
+            </b>
+        </TPtag><TPitem>Lists the names of the users logged in 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>user_number</b></tt>
+            </b>
+        </TPtag><TPitem>Number of users logged in 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>user_terms</b></tt>
+            </b>
+        </TPtag><TPitem>Lists the consoles in use 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>user_times</b></tt>
+            </b>
+        </TPtag><TPitem>Lists how long users have been logged in for 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>user_time</b></tt>
+            </b>
+	    <tt><b>console</b></tt>
+        </TPtag><TPitem>Lists how long the user for the given console has been
+        logged in for
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>utime</b></tt>
+            </b>
+            <tt><b>(format)</b></tt>
+        </TPtag><TPitem>Display time in UTC (universal coordinate time). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>voffset</b></tt>
+            </b>
+            <tt><b>(pixels)</b></tt>
+        </TPtag><TPitem>Change vertical offset by N pixels. Negative
+        values will cause text to overlap. See also $offset. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>voltage_mv</b></tt>
+            </b>
+            <tt><b>(n)</b></tt>
+        </TPtag><TPitem>Returns CPU #n's voltage in mV. CPUs are counted
+        from 1. If omitted, the parameter defaults to 1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>voltage_v</b></tt>
+            </b>
+            <tt><b>(n)</b></tt>
+        </TPtag><TPitem>Returns CPU #n's voltage in V. CPUs are counted
+        from 1. If omitted, the parameter defaults to 1. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>weather</b></tt>
+            </b>
+            <tt><b>URI locID data_type
+            (interval_in_minutes)</b></tt>
+        </TPtag><TPitem><para>Download, parse and display METAR data.</para><para>For the 'URI', there are two
+            possibilities:</para><para>
+                http://weather.noaa.gov/pub/data/observations/metar/stations/<br/>
+                http://xoap.weather.com/weather/local/</para><para>The first one is free to use but the second
+            requires you to register and obtain your partner ID and
+            license key. These two must be written, separated by a
+            space, into a file called .xoaprc which needs to be
+            placed into your home directory.</para><para>'locID' must be a valid location identifier for
+            the required uri. For the NOAA site this must be a
+            valid ICAO (see for instance
+            https://pilotweb.nas.faa.gov/qryhtml/icao/). For the
+            weather.com site this must be a valid location ID (see
+            for instance
+            http://aspnetresources.com/tools/locid.aspx).</para><para>'data_type' must be one of the following:</para><para>
+                    <b>last_update</b>
+                    <para>The date and time stamp of the data.
+                    The result depends on the URI used. For the
+                    NOAA site it is date (yyyy/mm/dd) and UTC time.
+                    For the weather.com one it is date
+                    ([m]m/[d]d/yy) and Local Time of the
+                    station.</para>
+                <br/>
+                    <b>temperature</b>
+					<para>Air temperature (you can use the
+                    'temperature_unit' config setting to change
+					units)</para>
+                <br/>
+                    <b>cloud_cover</b>
+                    <para>The highest cloud cover status</para>
+                <br/>
+                    <b>pressure</b>
+                    <para>Air pressure in millibar</para>
+                <br/>
+                    <b>wind_speed</b>
+                    <para>Wind speed in km/h</para>
+                <br/>
+                    <b>wind_dir</b>
+                    <para>Wind direction</para>
+                <br/>
+                    <b>wind_dir_DEG</b>
+                    <para>Compass wind direction</para>
+                <br/>
+                    <b>humidity</b>
+                    <para>Relative humidity in %</para>
+                <br/>
+                    <b>weather</b>
+                    <para>Any relevant weather event (rain, snow,
+                    etc.). This is not used if you are querying the
+                    weather.com site since this data is aggregated
+                    into the cloud_cover one</para>
+                <br/>
+                    <b>icon</b>
+                    <para>Weather icon (only for
+                    www.weather.com). Can be used together with the
+                    icon kit provided upon registering to their
+                    service.</para>
+                </para><para>'delay_in_minutes' (optional, default 30) cannot
+            be less than 30 minutes.</para><para>This object is threaded, and once a thread is
+            created it can't be explicitly destroyed. One thread
+            will run for each URI specified.</para><para>Note that these variables are still EXPERIMENTAL
+            and can be subject to many future changes.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>weather_forecast</b></tt>
+            </b>
+            <tt><b>URI locID day data_type
+            (interval_in_minutes)</b></tt>
+        </TPtag><TPitem><para>Download, parse and display weather forecast data
+	    for a given day (daytime only).</para><para>For the 'URI', for the time being only
+            http://xoap.weather.com/weather/local/ is
+	    supported. See 'weather' above for details of usage</para><para>'locID', see 'weather' above.</para><para>'day' is a number from 0 (today) to 4 (3 days
+            after tomorrow).</para><para>'data_type' must be one of the following:</para><para>
+                    <b>day</b>
+					<tt><b>Day of the week</b></tt>
+				<br/>
+                    <b>date</b>
+					<tt><b>Date, in the form MMM DD (ie. Jul 14)</b></tt>
+				<br/>
+                    <b>low</b>
+					<tt><b>Minimun temperature (you can use the
+                    'temperature_unit' config setting to change
+                    units)</b></tt>
+				<br/>
+                    <b>hi</b>
+					<tt><b>Maximum temperature (you can use the
+                    'temperature_unit' config setting to change
+                    units)</b></tt>
+				<br/>
+                    <b>icon</b>
+                    <tt><b>Weather icon. Can be used together with the
+                    icon kit provided upon registering to the weather.com
+                    service</b></tt>
+				<br/>
+                    <b>forecast</b>
+                    <tt><b>Weather forecast (sunny, rainy, etc.)</b></tt>
+				<br/>
+                    <b>wind_speed</b>
+                    <tt><b>Wind speed in km/h</b></tt>
+                <br/>
+                    <b>wind_dir</b>
+                    <tt><b>Wind direction</b></tt>
+                <br/>
+                    <b>wind_dir_DEG</b>
+                    <tt><b>Compass wind direction</b></tt>
+                <br/>
+                    <b>humidity</b>
+                    <tt><b>Relative humidity in %</b></tt>
+                <br/>
+                    <b>precipitation</b>
+                    <tt><b>Probability of having a
+					precipitation (in %)</b></tt>
+                </para><para>'delay_in_minutes' (optional, default 210) cannot
+            be lower than 210 min.</para><para>This object is threaded, and once a thread is
+            created it can't be explicitly destroyed. One thread
+            will run for each URI specified. You can use any
+            protocol that Curl supports.</para><para>Note that these variables are still EXPERIMENTAL
+            and can be subject to many future changes.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_ap</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless access point MAC address (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_bitrate</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless bitrate (ie 11 Mb/s) (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_essid</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless access point ESSID (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_link_bar</b></tt>
+            </b>
+            <tt><b>(height),(width) (net)</b></tt>
+        </TPtag><TPitem>Wireless link quality bar (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_link_qual</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless link quality (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_link_qual_max</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless link quality maximum value (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_link_qual_perc</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless link quality in percents (Linux only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>wireless_mode</b></tt>
+            </b>
+            <tt><b>(net)</b></tt>
+        </TPtag><TPitem>Wireless mode (Managed/Ad-Hoc/Master) (Linux
+        only) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>words</b></tt>
+            </b>
+            <tt><b>textfile</b></tt>
+        </TPtag><TPitem>Displays the number of words in the given file 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_album</b></tt>
+            </b>
+        </TPtag><TPitem>Album in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_artist</b></tt>
+            </b>
+        </TPtag><TPitem>Artist in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_bar</b></tt>
+            </b>
+            <tt><b>(height),(width)</b></tt>
+        </TPtag><TPitem>Bar of XMMS2's progress 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_bitrate</b></tt>
+            </b>
+        </TPtag><TPitem>Bitrate of current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_comment</b></tt>
+            </b>
+        </TPtag><TPitem>Comment in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_date</b></tt>
+            </b>
+        </TPtag><TPitem>Returns song's date. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_duration</b></tt>
+            </b>
+        </TPtag><TPitem>Duration of current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_elapsed</b></tt>
+            </b>
+        </TPtag><TPitem>Song's elapsed time 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_genre</b></tt>
+            </b>
+        </TPtag><TPitem>Genre in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_id</b></tt>
+            </b>
+        </TPtag><TPitem>XMMS2 id of current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_percent</b></tt>
+            </b>
+        </TPtag><TPitem>Percent of song's progress 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_playlist</b></tt>
+            </b>
+        </TPtag><TPitem>Returns the XMMS2 playlist. 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_size</b></tt>
+            </b>
+        </TPtag><TPitem>Size of current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_smart</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the song name in either the form "artist -
+        title" or file name, depending on whats available 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_status</b></tt>
+            </b>
+        </TPtag><TPitem>XMMS2 status (Playing, Paused, Stopped, or
+        Disconnected) 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_timesplayed</b></tt>
+            </b>
+        </TPtag><TPitem>Number of times a song was played (presumably). 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_title</b></tt>
+            </b>
+        </TPtag><TPitem>Title in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_tracknr</b></tt>
+            </b>
+        </TPtag><TPitem>Track number in current XMMS2 song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>xmms2_url</b></tt>
+            </b>
+        </TPtag><TPitem>Full path to current song 
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_jack_active</b></tt>
+            </b>
+        </TPtag><TPitem>If JACK is active display everything between the
+        $if_jack_active and the matching $endif.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_cpu_load</b></tt>
+            </b>
+        </TPtag><TPitem>Prints the current CPU load as estimated by JACK.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_buffer_size</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the current JACK buffer size.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_sampler_rate</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the current JACK sample rate.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_xruns</b></tt>
+            </b>
+        </TPtag><TPitem>Shows a count of xruns (buffer over/under runs)
+        that have ocurred.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_jack_rolling</b></tt>
+            </b>
+        </TPtag><TPitem>If the JACK transport mechanism is rolling, display
+        everything between the $if_jack_rolling and the matching $endif.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_frame</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the frame number in the JACK transport timeline.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_hour</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the frame number as hours.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_min</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the frame number as minutes within the hour.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_sec</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the frame number as seconds within the minute.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>if_jack_bbt</b></tt>
+            </b>
+        </TPtag><TPitem>If JACK transport is keeping BBT (bars/beats/ticks)
+        information then display everything between $if_jack_bbt and
+        the corresponding $endif.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_beat_type</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the beat type of the time signature the JACK
+        transport mechanism is using.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_beats_per_bar</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the number of beats per bar the JACK
+        transport mechanism is using.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_bpm</b></tt>
+            </b>
+        </TPtag><TPitem>Shows the beats per minute the JACK transport
+        mechanism is using.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_bar</b></tt>
+            </b>
+        </TPtag><TPitem>The bar position JACK transport is currently located.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_beat</b></tt>
+            </b>
+        </TPtag><TPitem>The beat within the bar JACK transport is currently
+        located.
+        <para/></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>jack_tick</b></tt>
+            </b>
+        </TPtag><TPitem>The tick within the beat JACK transport is currently
+        located.
+        <para/></TPitem></TP><SH>LUA API</SH><para>Conky features a Lua Programming API, and also ships with Lua
+			bindings for some useful libraries. Conky defines certain global
+			functions and variables which can be accessed from Lua code running
+			in Conky.
+		</para><para>To use Lua Conky, you first need to make sure you have a version of Conky
+			with Lua support enabled (``conky -v'' will report this).  Scripts
+			must first be loaded using the lua_load configuration option.  You
+			then call functions in Lua via Conky's $lua, $lua_read, and Lua
+			hooks.
+		</para><para>
+			Be careful when creating threaded objects through the Lua API.  You
+			could wind up with a whole bunch of threads running if a thread is
+			created with each iteration.
+		</para><para>
+			At this time, the Lua API should not be considered stable and may
+			change drastically from one release to another as it matures.
+		</para><para>
+			NOTE: In order to accommodate certain features in the cairo
+			library's API, Conky will export a few additional functions for the
+			creation of certain structures.  These are documented below.
+		</para><TP><TPtag>
+            <b>
+                <tt><b>conky_parse(string)</b></tt>
+            </b>
+            <tt><b>function</b></tt>
+        </TPtag><TPitem><para>This function takes a string that is evaluated as
+            per Conky's TEXT section, and then returns a string
+            with the result.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_set_update_interval(number)</b></tt>
+            </b>
+            <tt><b>function</b></tt>
+        </TPtag><TPitem><para>Sets Conky's update interval (in seconds) to
+            'number'.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_window</b></tt>
+            </b>
+            <tt><b>table</b></tt>
+        </TPtag><TPitem><para>This table contains some information about
+            Conky's window. The following table describes the
+            values contained:</para><para>
+                    <b>drawable</b>
+                    <tt><b>Window's drawable (Xlib Drawable),
+                    requires Lua extras enabled at compile
+                    time.</b></tt>
+                <br/>
+                    <b>visual</b>
+                    <tt><b>Window's visual (Xlib Visual), requires
+                    Lua extras enabled at compile time.</b></tt>
+                <br/>
+                    <b>display</b>
+                    <tt><b>Window's display (Xlib Display),
+                    requires Lua extras enabled at compile
+                    time.</b></tt>
+                <br/>
+                    <b>width</b>
+                    <tt><b>Window width (in pixels).</b></tt>
+                <br/>
+                    <b>height</b>
+                    <tt><b>Window height (in pixels).</b></tt>
+                <br/>
+                    <b>border_inner_margin</b>
+                    <tt><b>Window's inner border margin (in
+                    pixels).</b></tt>
+                <br/>
+                    <b>border_outer_margin</b>
+                    <tt><b>Window's outer border margin (in
+                    pixels).</b></tt>
+                <br/>
+                    <b>border_width</b>
+                    <tt><b>Window's border width (in
+                    pixels).</b></tt>
+                <br/>
+                    <b>text_start_x</b>
+                    <tt><b>The x component of the starting
+                    coordinate of text drawing.</b></tt>
+                <br/>
+                    <b>text_start_y</b>
+                    <tt><b>The y component of the starting
+                    coordinate of text drawing.</b></tt>
+                <br/>
+                    <b>text_width</b>
+                    <tt><b>The width of the text drawing
+                    region.</b></tt>
+                <br/>
+                    <b>text_height</b>
+                    <tt><b>The height of the text drawing
+                    region.</b></tt>
+                </para><para>NOTE: This table is only defined when X support
+            is enabled.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_info</b></tt>
+            </b>
+            <tt><b>table</b></tt>
+        </TPtag><TPitem><para>This table contains some information about
+            Conky's internal data. The following table describes
+            the values contained:</para><para>
+                    <b>update_interval</b>
+                    <tt><b>Conky's update interval (in
+                    seconds).</b></tt>
+                <br/>
+                    <b>uptime</b>
+                    <tt><b>System uptime, in seconds.</b></tt>
+                </para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_build_info</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem><para>A string containing the build info for this
+            particular instance of Conky, including the version,
+            build date, and architecture.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_build_date</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem><para>A string containing the build date for this
+            particular instance of Conky.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_build_arch</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem><para>A string containing the build architecture for
+            this particular instance of Conky.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_version</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem><para>A string containing the version of the current
+            instance of Conky.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>conky_config</b></tt>
+            </b>
+            <tt><b>string</b></tt>
+        </TPtag><TPitem><para>A string containing the path of the current Conky
+            configuration file.</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cairo_text_extents_t:create()</b></tt>
+            </b>
+            <tt><b>function</b></tt>
+        </TPtag><TPitem><para>
+				Call this function to return a new cairo_text_extents_t structure.  A creation function for this structure is not provided by the cairo API.  After calling this, you should use tolua.takeownership() on the return value to ensure ownership is passed properly.
+			</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cairo_font_extents_t:create()</b></tt>
+            </b>
+            <tt><b>function</b></tt>
+        </TPtag><TPitem><para>
+				Call this function to return a new cairo_font_extents_t structure.  A creation function for this structure is not provided by the cairo API.  After calling this, you should use tolua.takeownership() on the return value to ensure ownership is passed properly.
+			</para></TPitem></TP><TP><TPtag>
+            <b>
+                <tt><b>cairo_matrix_t:create()</b></tt>
+            </b>
+            <tt><b>function</b></tt>
+        </TPtag><TPitem><para>
+				Call this function to return a new cairo_matrix_t structure.  A creation function for this structure is not provided by the cairo API.  After calling this, you should use tolua.takeownership() on the return value to ensure ownership is passed properly.
+			</para></TPitem></TP><SH>EXAMPLES</SH><TP><TPtag>
+					<tt>conky</tt>
+					<tt><b>-t '${time %D %H:%M}' -o -u 30</b></tt>
+				</TPtag><TPitem>Start Conky in its own window with date
+					and clock as text and 30 sec update
+					interval.</TPitem></TP><TP><TPtag>
+					<tt>conky</tt>
+					<tt><b>-a top_left -x 5 -y 500 -d</b></tt>
+				</TPtag><TPitem>Start Conky to background at coordinates
+					(5, 500).</TPitem></TP><TP><TPtag>
+					<tt>conky</tt>
+					<tt><b>-C &gt; ~/.conkyrc</b></tt>
+				</TPtag><TPitem>Do not start Conky, but have it output
+					the builtin default config file to ~/.conkyrc for
+					later customising.</TPitem></TP><SH>FILES</SH><TP><TPtag>
+					<tt><i>
+						${sysconfdir}/conky/conky.conf</i></tt>
+				</TPtag><TPitem>Default system-wide configuration file.
+					The value of ${sysconfdir} depends on the
+					compile-time options (most likely /etc).</TPitem></TP><TP><TPtag>
+					<tt><i>~/.conkyrc</i></tt>
+				</TPtag><TPitem>Default personal configuration
+					file.</TPitem></TP><SH>BUGS</SH><para>Drawing to root or some other desktop window directly
+			doesn't work with all window managers. Especially doesn't
+			work well with Gnome and it has been reported that it
+			doesn't work with KDE either. Nautilus can be disabled from
+			drawing to desktop with program gconf-editor. Uncheck
+			show_desktop in /apps/nautilus/preferences/. There is -w
+			switch in Conky to set some specific window id. You might
+			find xwininfo -tree useful to find the window to draw to.
+			You can also use -o argument which makes Conky to create
+			its own window. If you do try running Conky in its own
+			window, be sure to read up on the own_window_type settings
+			and experiment.</para><SH>SEE ALSO</SH><para>
+			〈http://conky.sourceforge.net/〉
+		</para><para>
+			〈http://www.sourceforge.net/projects/conky〉
+		</para><para>
+			〈http://wiki.conky.be〉
+		</para><para>#conky on irc.freenode.net</para><SH>COPYING</SH><para>Copyright (c) 2005-2012 Brenden Matthews, Philip
+			Kovacs, et. al. Any original torsmo code is licensed under
+			the BSD license (see LICENSE.BSD for a copy). All code
+			written since the fork of torsmo is licensed under the GPL
+			(see LICENSE.GPL for a copy), except where noted
+			differently (such as in portmon code, timed thread code,
+			and audacious code which are LGPL, and prss which is an
+			MIT-style license).</para><SH>AUTHORS</SH><para>The Conky dev team (see AUTHORS for a full list of
+			contributors).</para></manpage>
