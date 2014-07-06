@@ -1,0 +1,12 @@
+source ~/.muttrc.color.16
+set mbox_type=maildir
+set editor=vim
+set folder=/var/mail/acheng
+set spoolfile=/var/mail/acheng/
+set from="Alan Cheng <bsdplus@gmail.com>"
+set move = no
+set include
+#set sort = 'reverse-threads'
+set sort = 'threads'
+set sort_aux = 'reverse-date-received'
+set auto_tag = yes

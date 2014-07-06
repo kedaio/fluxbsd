@@ -1,0 +1,21 @@
+# More configuration options here:
+# http://pyropus.ca/software/getmail/configuration.html
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = imap.gmail.com
+#mailboxes = ("since_201406","Personal",)
+mailboxes = ("since_201406",)
+username = bsdplus@gmail.com
+password = mypassword
+
+
+
+[destination]
+type = Maildir
+path = /var/mail/acheng/
+
+
+[options]
+verbose = 0
+message_log = ~/.getmail/log
+read_all = false
