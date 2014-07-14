@@ -1,8 +1,12 @@
 #sets the font
- gtk-font-name = "ubuntu light 8"
+gtk-font-name = "kroeger 05_55 caps" 6.5
+#gtk-font-name = "ubuntu light 8"
 
 #sets the theme
- gtk-theme-name = "Dyne"
+gtk-theme-name = "Zenner"
+
+gtk-toolbar-icon-size = GTK_ICON_SIZE_SMALL_TOOLBAR
+gtk-toolbar-style = GTK_TOOLBAR_ICONS
 
 #sets the icon theme
- gtk-icon-theme-name = "ChocoDarkOrange"
+gtk-icon-theme-name = "EleMint"
