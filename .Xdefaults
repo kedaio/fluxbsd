@@ -5,7 +5,7 @@
 URxvt.background: #000000
 URxvt.foreground: #FFFFFF
 URxvt.colorBD: #CFCFCF
-URxvt.colorUL: #969696
+!URxvt.colorUL: #969696
 URxvt.colorIT: #686868
 
 
@@ -48,8 +48,8 @@ URxvt*hold: false
 
 !URxvt*urlLauncher: xombrero
 URxvt*imLocale: en_US.UTF-8
-URxvt*font: xft:uushi:pixelsize=13:antialias=true:hinting=true
-URxvt*boldFont: xft:uushi:pixelsize=13:antialias=true:hinting=true
+URxvt*font: xft:gohufont:pixelsize=14:antialias=true:hinting=true
+URxvt*boldFont: xft:gohufont:pixelsize=14:antialias=true:hinting=true
 
 urxvt*transparent: true
 urxvt*shading: 15
@@ -84,8 +84,9 @@ XTerm*foreground: white
 XTerm*scrollBar: false
 XTerm*eightBitInput: true
 XTerm*pointerShape: left_ptr
-XTerm.*loginshell: true
-XTerm.*font:  -uushi-*-*-*-*-11-*-*-*-*-*-*-*
+XTerm*loginShell: true
+XTerm*faceName: gohufont
+!XTerm.*font:  -gohufont-*-*-*-*-11-*-*-*-*-*-*-*
 
 xcalc*geometry:                        200x275
 xcalc.ti.bevel.background:             #111111
