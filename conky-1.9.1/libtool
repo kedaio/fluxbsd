@@ -2,7 +2,7 @@
 
 # libtool - Provide generalized library-building support services.
 # Generated automatically by config.status (conky) 1.9.1_preNONE
-# Libtool was configured on host azalea.kdump.me:
+# Libtool was configured on host vanilla.kdump.me:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 #
 #   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005,
@@ -40,7 +40,7 @@ available_tags=""
 # ### BEGIN LIBTOOL CONFIG
 
 # A sed program that does not truncate output.
-SED="/usr/local/bin/gsed"
+SED="/usr/bin/sed"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
 Xsed="$SED -e 1s/^X//"
@@ -81,13 +81,13 @@ PATH_SEPARATOR=":"
 
 # The host system.
 host_alias=
-host=x86_64-unknown-openbsd5.5
-host_os=openbsd5.5
+host=x86_64-unknown-openbsd5.8
+host_os=openbsd5.8
 
 # The build system.
 build_alias=
-build=x86_64-unknown-openbsd5.5
-build_os=openbsd5.5
+build=x86_64-unknown-openbsd5.8
+build_os=openbsd5.8
 
 # A BSD- or MS-compatible name lister.
 NM="/usr/bin/nm -B"
@@ -147,7 +147,7 @@ AR="ar"
 AR_FLAGS="cru"
 
 # How to feed a file listing to the archiver.
-archiver_list_spec=""
+archiver_list_spec="@"
 
 # A symbol stripping program.
 STRIP="strip"
@@ -272,7 +272,7 @@ finish_eval=""
 hardcode_into_libs=no
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/gcc-lib/amd64-unknown-openbsd5.5/4.2.1 /usr/lib "
+sys_lib_search_path_spec="/usr/lib/gcc-lib/amd64-unknown-openbsd5.8/4.2.1 /usr/lib "
 
 # Run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/usr/lib"

@@ -401,8 +401,8 @@ AMDEP_TRUE="" ac_aux_dir="."
 sed_quote_subst='s/\(["`$\\]\)/\\\1/g'
 double_quote_subst='s/\(["`\\]\)/\\\1/g'
 delay_variable_subst='s/\\\\\\\\\\\$/\\\\\\$/g'
-SED='/usr/local/bin/gsed'
-Xsed='/usr/local/bin/gsed -e 1s/^X//'
+SED='/usr/bin/sed'
+Xsed='/usr/bin/sed -e 1s/^X//'
 GREP='grep'
 EGREP='grep -E'
 FGREP='grep -F'
@@ -417,11 +417,11 @@ pic_mode='default'
 enable_fast_install='needless'
 PATH_SEPARATOR=':'
 host_alias=''
-host='x86_64-unknown-openbsd5.5'
-host_os='openbsd5.5'
+host='x86_64-unknown-openbsd5.8'
+host_os='openbsd5.8'
 build_alias=''
-build='x86_64-unknown-openbsd5.5'
-build_os='openbsd5.5'
+build='x86_64-unknown-openbsd5.8'
+build_os='openbsd5.8'
 NM='/usr/bin/nm -B'
 LN_S='ln -s'
 max_cmd_len='196608'
@@ -443,7 +443,7 @@ DLLTOOL='false'
 sharedlib_from_linklib_cmd='print -r --'
 AR='ar'
 AR_FLAGS='cru'
-archiver_list_spec=''
+archiver_list_spec='@'
 STRIP='strip'
 RANLIB='ranlib'
 old_postinstall_cmds='chmod 644 $oldlib~$RANLIB -t $tool_oldlib'
@@ -523,7 +523,7 @@ postuninstall_cmds=''
 finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
 finish_eval=''
 hardcode_into_libs='no'
-sys_lib_search_path_spec='/usr/lib/gcc-lib/amd64-unknown-openbsd5.5/4.2.1 /usr/lib '
+sys_lib_search_path_spec='/usr/lib/gcc-lib/amd64-unknown-openbsd5.8/4.2.1 /usr/lib '
 sys_lib_dlsearch_path_spec='/usr/lib'
 hardcode_action='immediate'
 enable_dlopen='unknown'
@@ -689,12 +689,12 @@ s,@INSTALL_DATA@,${INSTALL} -m 644,;t t
 s,@CYGPATH_W@,echo,;t t
 s,@PACKAGE@,conky,;t t
 s,@VERSION@,1.9.1_preNONE,;t t
-s,@ACLOCAL@,${SHELL} /var/tmp/conky-1.9.1/missing --run aclocal-1.9,;t t
-s,@AUTOCONF@,${SHELL} /var/tmp/conky-1.9.1/missing --run autoconf,;t t
-s,@AUTOMAKE@,${SHELL} /var/tmp/conky-1.9.1/missing --run automake-1.9,;t t
-s,@AUTOHEADER@,${SHELL} /var/tmp/conky-1.9.1/missing --run autoheader,;t t
-s,@MAKEINFO@,${SHELL} /var/tmp/conky-1.9.1/missing --run makeinfo,;t t
-s,@install_sh@,/var/tmp/conky-1.9.1/install-sh,;t t
+s,@ACLOCAL@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run aclocal-1.9,;t t
+s,@AUTOCONF@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run autoconf,;t t
+s,@AUTOMAKE@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run automake-1.9,;t t
+s,@AUTOHEADER@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run autoheader,;t t
+s,@MAKEINFO@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run makeinfo,;t t
+s,@install_sh@,/home/acheng/fluxbsd/conky-1.9.1/install-sh,;t t
 s,@STRIP@,strip,;t t
 s,@ac_ct_STRIP@,strip,;t t
 s,@INSTALL_STRIP_PROGRAM@,${SHELL} $(install_sh) -c -s,;t t
@@ -702,7 +702,7 @@ s,@mkdir_p@,$(SHELL) $(install_sh) -d,;t t
 s,@AWK@,awk,;t t
 s,@SET_MAKE@,,;t t
 s,@am__leading_dot@,.,;t t
-s,@AMTAR@,${SHELL} /var/tmp/conky-1.9.1/missing --run tar,;t t
+s,@AMTAR@,${SHELL} /home/acheng/fluxbsd/conky-1.9.1/missing --run tar,;t t
 s,@am__tar@,${AMTAR} chof - "$$tardir",;t t
 s,@am__untar@,${AMTAR} xf -,;t t
 s,@CFLAGS@,,;t t
@@ -721,15 +721,15 @@ s,@AMDEPBACKSLASH@,\,;t t
 s,@CCDEPMODE@,depmode=gcc3,;t t
 s,@am__fastdepCC_TRUE@,,;t t
 s,@am__fastdepCC_FALSE@,#,;t t
-s,@build@,x86_64-unknown-openbsd5.5,;t t
+s,@build@,x86_64-unknown-openbsd5.8,;t t
 s,@build_cpu@,x86_64,;t t
 s,@build_vendor@,unknown,;t t
-s,@build_os@,openbsd5.5,;t t
-s,@host@,x86_64-unknown-openbsd5.5,;t t
+s,@build_os@,openbsd5.8,;t t
+s,@host@,x86_64-unknown-openbsd5.8,;t t
 s,@host_cpu@,x86_64,;t t
 s,@host_vendor@,unknown,;t t
-s,@host_os@,openbsd5.5,;t t
-s,@SED@,/usr/local/bin/gsed,;t t
+s,@host_os@,openbsd5.8,;t t
+s,@SED@,/usr/bin/sed,;t t
 s,@EGREP@,grep -E,;t t
 s,@FGREP@,grep -F,;t t
 s,@GREP@,grep,;t t
@@ -771,8 +771,8 @@ s,@BUILD_NETBSD_TRUE@,#,;t t
 s,@BUILD_NETBSD_FALSE@,,;t t
 s,@BUILD_OPENBSD_TRUE@,,;t t
 s,@BUILD_OPENBSD_FALSE@,#,;t t
-s,@BUILD_DATE@,Thu Jul  3 06:21:35 CST 2014,;t t
-s,@BUILD_ARCH@,OpenBSD 5.5 (amd64),;t t
+s,@BUILD_DATE@,Sat Jun 27 19:11:04 CST 2015,;t t
+s,@BUILD_ARCH@,OpenBSD 5.8 (amd64),;t t
 s,@BUILD_CONFIG_OUTPUT_TRUE@,#,;t t
 s,@BUILD_CONFIG_OUTPUT_FALSE@,,;t t
 s,@BUILD_NCURSES_TRUE@,,;t t
@@ -827,9 +827,9 @@ s,@LUA_CFLAGS@,-I/usr/local/include/lua-5.1,;t t
 s,@LUA_LIBS@,-L/usr/local/lib -llua5.1 -lm,;t t
 s,@LUA51_CFLAGS@,,;t t
 s,@LUA51_LIBS@,,;t t
-s,@cairo_CFLAGS@,-I/usr/local/include/cairo -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/X11R6/include/pixman-1 -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/libpng16,;t t
+s,@cairo_CFLAGS@,-I/usr/local/include/cairo -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/X11R6/include/pixman-1 -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/include -I/usr/local/include/libpng16,;t t
 s,@cairo_LIBS@,-L/usr/local/lib -Wl,-rpath-link,/usr/X11R6/lib -lcairo,;t t
-s,@cairo_xlib_CFLAGS@,-I/usr/local/include/cairo -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/X11R6/include/pixman-1 -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/libpng16,;t t
+s,@cairo_xlib_CFLAGS@,-I/usr/local/include/cairo -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/X11R6/include/pixman-1 -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/include -I/usr/local/include/libpng16,;t t
 s,@cairo_xlib_LIBS@,-L/usr/local/lib -Wl,-rpath-link,/usr/X11R6/lib -L/usr/X11R6/lib -lcairo -lX11 -lXext,;t t
 s,@toluapp@,tolua++,;t t
 s,@tolua_LIBS@,-ltolua++  -L/usr/local/lib -llua5.1 -lm ,;t t
@@ -850,7 +850,7 @@ s,@Xext_CFLAGS@,-I/usr/X11R6/include,;t t
 s,@Xext_LIBS@,-L/usr/X11R6/lib -lXext,;t t
 s,@XDamage_CFLAGS@,-I/usr/X11R6/include,;t t
 s,@XDamage_LIBS@,-L/usr/X11R6/lib -lXdamage -lXfixes,;t t
-s,@Xft_CFLAGS@,-I/usr/X11R6/include -I/usr/X11R6/include/freetype2,;t t
+s,@Xft_CFLAGS@,-I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/include,;t t
 s,@Xft_LIBS@,-L/usr/X11R6/lib -lXft,;t t
 s,@BUILD_NVIDIA_TRUE@,#,;t t
 s,@BUILD_NVIDIA_FALSE@,,;t t
@@ -869,7 +869,7 @@ s,@db2x_manxml_cmd@,db2x_manxml,;t t
 s,@xsltproc_cmd@,xsltproc,;t t
 s,@HAVE_DOCSTUFF_TRUE@,,;t t
 s,@HAVE_DOCSTUFF_FALSE@,#,;t t
-s,@conky_CFLAGS@, -I/usr/X11R6/include -I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/X11R6/include -I/usr/local/include/lua-5.1  -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/local/include -I/usr/local/include/libxml2 -I/usr/local/include -Wall -W,;t t
+s,@conky_CFLAGS@, -I/usr/X11R6/include -I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/X11R6/include -I/usr/local/include/lua-5.1  -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/include -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/local/include -I/usr/local/include/libxml2 -I/usr/local/include -Wall -W,;t t
 s,@conky_LIBS@, -lncurses -lm -L/usr/X11R6/lib -lX11 -L/usr/local/lib -L/usr/X11R6/lib -lImlib2 -lfreetype -lz -lX11 -lXext -lm -L/usr/local/lib -llua5.1 -lm  -ltolua++  -liconv -L/usr/X11R6/lib -lXext -L/usr/X11R6/lib -lXdamage -lXfixes -L/usr/X11R6/lib -lXft -L/usr/local/lib -lglib-2.0 -lintl -L/usr/local/lib -lcurl -L/usr/local/lib -lxml2 -lkvm -lossaudio -ltolua++ ,;t t
 s,@LIBOBJS@,,;t t
 s,@LTLIBOBJS@,,;t t

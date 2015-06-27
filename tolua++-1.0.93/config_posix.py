@@ -6,6 +6,7 @@
 # flags for the compiler
 #CCFLAGS = []
 CCFLAGS = ['-O2','-I/usr/local/include/lua-5.1','-L /usr/local/lib', '-Wall']
+LIBPATH = ['/usr/local/lib']
 
 # this is the default directory for installation. Files will be installed on
 # <prefix>/bin, <prefix>/lib and <prefix>/include when you run 'scons install'

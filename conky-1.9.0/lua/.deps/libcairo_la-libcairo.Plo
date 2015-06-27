@@ -1,0 +1,102 @@
+libcairo_la-libcairo.lo libcairo_la-libcairo.o: libcairo.c \
+  /usr/include/stdlib.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/cdefs.h /usr/include/machine/_types.h \
+  /usr/include/sys/types.h /usr/include/sys/endian.h \
+  /usr/include/sys/_endian.h /usr/include/sys/_types.h \
+  /usr/include/machine/endian.h /usr/include/sys/select.h \
+  /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
+  /usr/include/string.h /usr/local/include/tolua++.h \
+  /usr/local/include/lua-5.1/lua.h /usr/include/stdarg.h \
+  /usr/include/stddef.h /usr/local/include/lua-5.1/luaconf.h \
+  /usr/include/limits.h /usr/include/sys/limits.h \
+  /usr/include/machine/limits.h /usr/include/sys/syslimits.h \
+  /usr/local/include/lua-5.1/lauxlib.h /usr/include/stdio.h \
+  /usr/local/include/lua-5.1/lua.h \
+  /usr/local/include/cairo/cairo-features.h \
+  /usr/local/include/cairo/cairo-deprecated.h \
+  /usr/local/include/cairo/cairo.h \
+  /usr/local/include/cairo/cairo-version.h \
+  /usr/local/include/cairo/cairo-features.h \
+  /usr/local/include/cairo/cairo-deprecated.h \
+  /usr/local/include/cairo/cairo-xlib.h /usr/local/include/cairo/cairo.h \
+  /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
+  /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
+  libcairo-helper.h
+
+/usr/include/stdlib.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/sys/endian.h:
+
+/usr/include/sys/_endian.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/machine/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/sys/time.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/_time.h:
+
+/usr/include/string.h:
+
+/usr/local/include/tolua++.h:
+
+/usr/local/include/lua-5.1/lua.h:
+
+/usr/include/stdarg.h:
+
+/usr/include/stddef.h:
+
+/usr/local/include/lua-5.1/luaconf.h:
+
+/usr/include/limits.h:
+
+/usr/include/sys/limits.h:
+
+/usr/include/machine/limits.h:
+
+/usr/include/sys/syslimits.h:
+
+/usr/local/include/lua-5.1/lauxlib.h:
+
+/usr/include/stdio.h:
+
+/usr/local/include/lua-5.1/lua.h:
+
+/usr/local/include/cairo/cairo-features.h:
+
+/usr/local/include/cairo/cairo-deprecated.h:
+
+/usr/local/include/cairo/cairo.h:
+
+/usr/local/include/cairo/cairo-version.h:
+
+/usr/local/include/cairo/cairo-features.h:
+
+/usr/local/include/cairo/cairo-deprecated.h:
+
+/usr/local/include/cairo/cairo-xlib.h:
+
+/usr/local/include/cairo/cairo.h:
+
+/usr/X11R6/include/X11/Xlib.h:
+
+/usr/X11R6/include/X11/X.h:
+
+/usr/X11R6/include/X11/Xfuncproto.h:
+
+/usr/X11R6/include/X11/Xosdefs.h:
+
+libcairo-helper.h:

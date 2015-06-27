@@ -1,0 +1,192 @@
+conky-fonts.o conky-fonts.o: fonts.c conky.h config.h common.h \
+  /usr/include/stdio.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/cdefs.h /usr/include/sys/_types.h \
+  /usr/include/machine/_types.h /usr/include/sys/types.h \
+  /usr/include/sys/endian.h /usr/include/sys/_endian.h \
+  /usr/include/machine/endian.h /usr/include/sys/select.h \
+  /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
+  /usr/include/stdlib.h /usr/include/string.h /usr/include/sys/socket.h \
+  /usr/include/sys/uio.h text_object.h specials.h \
+  /usr/include/sys/utsname.h /usr/include/arpa/inet.h mpd.h \
+  ccurl_thread.h timed_thread.h rss.h sony.h llua.h \
+  /usr/local/include/lua-5.1/lua.h /usr/include/stdarg.h \
+  /usr/include/stddef.h /usr/local/include/lua-5.1/luaconf.h \
+  /usr/include/limits.h /usr/include/sys/limits.h \
+  /usr/include/machine/limits.h /usr/include/sys/syslimits.h \
+  /usr/local/include/lua-5.1/lauxlib.h /usr/local/include/lua-5.1/lua.h \
+  /usr/local/include/lua-5.1/lualib.h x11.h /usr/X11R6/include/X11/Xlib.h \
+  /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+  /usr/X11R6/include/X11/Xosdefs.h /usr/X11R6/include/X11/Xatom.h \
+  /usr/X11R6/include/X11/Xft/Xft.h \
+  /usr/X11R6/include/freetype2/ft2build.h \
+  /usr/X11R6/include/freetype2/config/ftheader.h \
+  /usr/X11R6/include/freetype2/freetype.h \
+  /usr/X11R6/include/freetype2/config/ftconfig.h \
+  /usr/X11R6/include/freetype2/config/ftoption.h \
+  /usr/X11R6/include/freetype2/config/ftstdlib.h /usr/include/setjmp.h \
+  /usr/include/machine/setjmp.h /usr/X11R6/include/freetype2/fttypes.h \
+  /usr/X11R6/include/freetype2/ftsystem.h \
+  /usr/X11R6/include/freetype2/ftimage.h \
+  /usr/X11R6/include/freetype2/fterrors.h \
+  /usr/X11R6/include/freetype2/ftmoderr.h \
+  /usr/X11R6/include/freetype2/fterrdef.h \
+  /usr/X11R6/include/fontconfig/fontconfig.h /usr/include/sys/stat.h \
+  /usr/X11R6/include/X11/extensions/Xrender.h \
+  /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/keysym.h \
+  /usr/X11R6/include/X11/keysymdef.h \
+  /usr/X11R6/include/X11/extensions/render.h \
+  /usr/X11R6/include/X11/Xdefs.h /usr/X11R6/include/X11/Xft/XftCompat.h \
+  /usr/X11R6/include/X11/extensions/Xdbe.h \
+  /usr/X11R6/include/X11/extensions/dbe.h fonts.h logging.h mail.h
+
+conky.h:
+
+config.h:
+
+common.h:
+
+/usr/include/stdio.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/cdefs.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/sys/endian.h:
+
+/usr/include/sys/_endian.h:
+
+/usr/include/machine/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/sys/time.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/_time.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/string.h:
+
+/usr/include/sys/socket.h:
+
+/usr/include/sys/uio.h:
+
+text_object.h:
+
+specials.h:
+
+/usr/include/sys/utsname.h:
+
+/usr/include/arpa/inet.h:
+
+mpd.h:
+
+ccurl_thread.h:
+
+timed_thread.h:
+
+rss.h:
+
+sony.h:
+
+llua.h:
+
+/usr/local/include/lua-5.1/lua.h:
+
+/usr/include/stdarg.h:
+
+/usr/include/stddef.h:
+
+/usr/local/include/lua-5.1/luaconf.h:
+
+/usr/include/limits.h:
+
+/usr/include/sys/limits.h:
+
+/usr/include/machine/limits.h:
+
+/usr/include/sys/syslimits.h:
+
+/usr/local/include/lua-5.1/lauxlib.h:
+
+/usr/local/include/lua-5.1/lua.h:
+
+/usr/local/include/lua-5.1/lualib.h:
+
+x11.h:
+
+/usr/X11R6/include/X11/Xlib.h:
+
+/usr/X11R6/include/X11/X.h:
+
+/usr/X11R6/include/X11/Xfuncproto.h:
+
+/usr/X11R6/include/X11/Xosdefs.h:
+
+/usr/X11R6/include/X11/Xatom.h:
+
+/usr/X11R6/include/X11/Xft/Xft.h:
+
+/usr/X11R6/include/freetype2/ft2build.h:
+
+/usr/X11R6/include/freetype2/config/ftheader.h:
+
+/usr/X11R6/include/freetype2/freetype.h:
+
+/usr/X11R6/include/freetype2/config/ftconfig.h:
+
+/usr/X11R6/include/freetype2/config/ftoption.h:
+
+/usr/X11R6/include/freetype2/config/ftstdlib.h:
+
+/usr/include/setjmp.h:
+
+/usr/include/machine/setjmp.h:
+
+/usr/X11R6/include/freetype2/fttypes.h:
+
+/usr/X11R6/include/freetype2/ftsystem.h:
+
+/usr/X11R6/include/freetype2/ftimage.h:
+
+/usr/X11R6/include/freetype2/fterrors.h:
+
+/usr/X11R6/include/freetype2/ftmoderr.h:
+
+/usr/X11R6/include/freetype2/fterrdef.h:
+
+/usr/X11R6/include/fontconfig/fontconfig.h:
+
+/usr/include/sys/stat.h:
+
+/usr/X11R6/include/X11/extensions/Xrender.h:
+
+/usr/X11R6/include/X11/Xutil.h:
+
+/usr/X11R6/include/X11/keysym.h:
+
+/usr/X11R6/include/X11/keysymdef.h:
+
+/usr/X11R6/include/X11/extensions/render.h:
+
+/usr/X11R6/include/X11/Xdefs.h:
+
+/usr/X11R6/include/X11/Xft/XftCompat.h:
+
+/usr/X11R6/include/X11/extensions/Xdbe.h:
+
+/usr/X11R6/include/X11/extensions/dbe.h:
+
+fonts.h:
+
+logging.h:
+
+mail.h:
