@@ -1,0 +1,12 @@
+to compile/install on OpenBSD, do the following:
+
+1. install dependency packages : imlib2 docbook2x libtool cairo mpd scons lua51
+2. cd to conky-1.9.0 folder (if you use conky-1.9.0 from sourceforge, apply OpenBSD patches to make it compile. source files in this repo are already patched)
+3. compile tolua++ ( by running 'scons all && scons install' in the tolua++-1.0.9 folder)
+4. run autogen.sh
+5. run myconfig.sh
+6. run make
+7. run make install
+8. run "cd lua && make install"
+9. cd /usr/local/lib/conky && ln -s libcairo.so.*.* libcairo.so
+10. pick your conky rc file and give it a try
