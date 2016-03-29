@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="48"
+   height="48"
+   id="svg5541">
+  <defs
+     id="defs5543" />
+  <metadata
+     id="metadata5546">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <dc:date>June 2007</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Nilsson</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://www.fsf.org/licensing/licenses/gpl.html" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <path
+       d="m 29.762532,24.158312 a 5.6675463,5.6675463 0 1 1 -11.335092,0 5.6675463,5.6675463 0 1 1 11.335092,0 z"
+       transform="matrix(3.8940688,0,0,3.8699342,-69.864911,-69.454358)"
+       id="path5553"
+       style="fill:#6c9eab;fill-opacity:1;stroke:#ffffff;stroke-width:1.03040123;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       d="m 29.762532,24.158312 a 5.6675463,5.6675463 0 1 1 -11.335092,0 5.6675463,5.6675463 0 1 1 11.335092,0 z"
+       transform="matrix(2.4726096,0,0,2.456508,-35.59963,-35.45887)"
+       id="path5539"
+       style="fill:#2a6d7d;fill-opacity:1;stroke:#ffffff;stroke-width:1.62301719;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       d="m 29.762532,24.158312 a 5.6675463,5.6675463 0 1 1 -11.335092,0 5.6675463,5.6675463 0 1 1 11.335092,0 z"
+       transform="matrix(1.0526115,0,0,1.0490217,-1.393386,-1.2798122)"
+       id="path5537"
+       style="fill:#6c9eab;fill-opacity:1;stroke:#ffffff;stroke-width:3.80656886;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+  </g>
+</svg>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 9.0, SVG Export Plug-In  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   xml:space="preserve"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="accessories-text-editor.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0"><metadata
+   id="metadata32"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title><dc:date>May 2009</dc:date><dc:creator><cc:Agent><dc:title>Jakub Steiner</dc:title></cc:Agent></dc:creator><dc:coverage /><dc:description>A paper with a pencil on it</dc:description><dc:subject><rdf:Bag><rdf:li>text</rdf:li><rdf:li>editor</rdf:li></rdf:Bag></dc:subject></cc:Work></rdf:RDF></metadata><defs
+   id="defs30" /><sodipodi:namedview
+   inkscape:window-height="744"
+   inkscape:window-width="1024"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="1"
+   guidetolerance="10000"
+   gridtolerance="10000"
+   objecttolerance="10000"
+   borderopacity="1.0"
+   bordercolor="#666666"
+   pagecolor="#c8c8c8"
+   id="base"
+   showgrid="true"
+   inkscape:object-nodes="false"
+   inkscape:object-paths="false"
+   inkscape:zoom="11.313708"
+   inkscape:cx="26.782805"
+   inkscape:cy="24.455183"
+   inkscape:window-x="266"
+   inkscape:window-y="166"
+   inkscape:current-layer="svg2"
+   inkscape:window-maximized="0"
+   inkscape:snap-grids="true"
+   inkscape:snap-bbox="true"
+   inkscape:bbox-paths="false"><inkscape:grid
+     type="xygrid"
+     id="grid2393"
+     visible="true"
+     enabled="true"
+     empspacing="5"
+     snapvisiblegridlinesonly="true" /></sodipodi:namedview>
+	<rect
+   style="fill:none;fill-opacity:0.47478991999999998;stroke:none;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   id="rect2400"
+   width="48"
+   height="48"
+   x="0"
+   y="0" /><path
+   style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1"
+   d="M 35.546763,4 C 37.459856,4 39,5.5401438 39,7.4532373 L 39,40.546763 C 39,42.459856 37.455904,44.122906 35.546763,44 L 7,44 7,4 z"
+   id="rect3174"
+   inkscape:connector-curvature="0"
+   sodipodi:nodetypes="ssssccs" /><path
+   style="fill:#2a6d7d;fill-opacity:1;stroke:none"
+   d="M 35.546763,4 C 37.459856,4 39,5.5401438 39,7.4532373 L 39,40.546763 C 39,42.459856 37.455904,44.122906 35.546763,44 L 7,44 7,4 z"
+   id="rect3172"
+   inkscape:connector-curvature="0"
+   sodipodi:nodetypes="ssssccs" />
+	
+	<g
+   id="crop"
+   style="fill-rule:nonzero;stroke:#000000;stroke-miterlimit:4">
+		<path
+   style="fill:none;stroke:none"
+   d="M 48,48 L 0,48 L 0,0 L 48,0 L 48,48 z"
+   id="path27" />
+	</g>
+<rect
+   style="fill:#e04613;fill-opacity:1;stroke:#ffffff;stroke-width:1.99999988;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+   id="rect3764"
+   width="34"
+   height="10"
+   x="6"
+   y="9"
+   ry="0" /></svg>

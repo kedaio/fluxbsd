@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 9.0, SVG Export Plug-In  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   xml:space="preserve"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="accessories-text-editor.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0"><metadata
+   id="metadata32"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title>Text Editor</dc:title><dc:date>May 2009</dc:date><dc:creator><cc:Agent><dc:title>Jakub Steiner</dc:title></cc:Agent></dc:creator><dc:coverage /><dc:description>A paper with a pencil on it</dc:description><dc:subject><rdf:Bag><rdf:li>text</rdf:li><rdf:li>editor</rdf:li></rdf:Bag></dc:subject></cc:Work></rdf:RDF></metadata><defs
+   id="defs30" /><sodipodi:namedview
+   inkscape:window-height="744"
+   inkscape:window-width="1024"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   guidetolerance="10000"
+   gridtolerance="10000"
+   objecttolerance="10000"
+   borderopacity="1.0"
+   bordercolor="#666666"
+   pagecolor="#ffffff"
+   id="base"
+   showgrid="true"
+   inkscape:object-nodes="true"
+   inkscape:object-paths="true"
+   inkscape:zoom="8"
+   inkscape:cx="23.417004"
+   inkscape:cy="17.88664"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:current-layer="svg2"
+   inkscape:window-maximized="0"><inkscape:grid
+     type="xygrid"
+     id="grid2393"
+     visible="true"
+     enabled="true" /></sodipodi:namedview>
+	<rect
+   style="fill:none;fill-opacity:0.47478991999999998;stroke:none;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   id="rect2400"
+   width="48"
+   height="48"
+   x="0"
+   y="0" /><rect
+   ry="3.4532373"
+   y="4"
+   x="7"
+   height="40"
+   width="32"
+   id="rect3174"
+   style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#ffffff;stroke-width:12.56298637;stroke-linejoin:round;stroke-miterlimit:4"
+   d="m 38.63413,30.507994 -13.626737,-13.341361 -7.658824,-2.921466 2.685562,8.472251 13.228876,13.049215 5.371123,-5.258639 0,0 z"
+   id="path7" /><rect
+   style="fill:#262729;fill-opacity:1;stroke:none;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+   id="rect3172"
+   width="32"
+   height="40"
+   x="7"
+   y="4"
+   ry="3.4532373" /><path
+   id="path13"
+   d="M 36,7 L 10,7 L 10,41 L 36,41 L 36,7 z"
+   style="fill:#ffffff;fill-rule:nonzero;stroke:none;stroke-miterlimit:4" />
+	<g
+   id="Layer_x0020_4"
+   style="fill-rule:nonzero;stroke:#000000;stroke-miterlimit:4"
+   transform="matrix(0.9946524,0,0,0.973822,0.1410826,0.9038053)">
+		<path
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke-width:4.97164096000000022;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1;stroke:#262729;stroke-opacity:1"
+   d="M 38.7,30.4 25,16.7 l -7.7,-3 2.7,8.7 13.3,13.4 5.4,-5.4 0,0 z"
+   id="path16" />
+		<path
+   inkscape:connector-curvature="0"
+   style="stroke:none;fill:#262729;fill-opacity:1"
+   d="M 38.7,30.4 25,16.7 l -7.7,-3 2.7,8.7 13.3,13.4 5.4,-5.4 0,0 z"
+   id="path18" />
+		<path
+   inkscape:connector-curvature="0"
+   style="stroke:none;fill:#262729;fill-opacity:1"
+   d="m 20.6,14.7 -2.5,2.5 -1.1,-3.8 3.6,1.3 0,0 z"
+   id="path20" />
+		
+		<path
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:none"
+   d="m 20.4,14.9 -2.1,2.1 1.6,5.2 2.7,-0.3 2.4,-2.4 0.3,-2.4 -5,-2.2 0.1,0 z"
+   id="path24" />
+	</g>
+	<g
+   id="crop"
+   style="fill-rule:nonzero;stroke:#000000;stroke-miterlimit:4">
+		<path
+   style="fill:none;stroke:none"
+   d="M 48,48 L 0,48 L 0,0 L 48,0 L 48,48 z"
+   id="path27" />
+	</g>
+</svg>

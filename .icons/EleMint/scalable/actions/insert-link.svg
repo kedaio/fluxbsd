@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg1306"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="insert-link.svg"
+   inkscape:export-filename="/home/lapo/Desktop/insert-link-16.png"
+   inkscape:export-xdpi="90.000031"
+   inkscape:export-ydpi="90.000031"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs1308">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 24 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="48 : 24 : 1"
+       inkscape:persp3d-origin="24 : 16 : 1"
+       id="perspective22" />
+    <linearGradient
+       id="linearGradient3269">
+      <stop
+         id="stop3271"
+         offset="0"
+         style="stop-color:#fecb81;stop-opacity:1" />
+      <stop
+         id="stop3273"
+         offset="1"
+         style="stop-color:#fcaf3e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3473">
+      <stop
+         style="stop-color:#888a85;stop-opacity:1"
+         offset="0"
+         id="stop3475" />
+      <stop
+         id="stop3481"
+         offset="0.5"
+         style="stop-color:#eeeeec;stop-opacity:1;" />
+      <stop
+         style="stop-color:#cecec8;stop-opacity:1;"
+         offset="1"
+         id="stop3477" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3387">
+      <stop
+         style="stop-color:#8f9388;stop-opacity:1;"
+         offset="0"
+         id="stop3389" />
+      <stop
+         id="stop3354"
+         offset="0.5"
+         style="stop-color:#c6cac2;stop-opacity:1;" />
+      <stop
+         style="stop-color:#d3d7cf;stop-opacity:0;"
+         offset="1"
+         id="stop3391" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666"
+     borderopacity="1"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="9.2121204"
+     inkscape:cx="-6.5404193"
+     inkscape:cy="30.347034"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     fill="#fcaf3e"
+     stroke="#555753"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1598"
+     inkscape:window-height="879"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:showpageshadow="false"
+     showborder="true"
+     inkscape:grid-points="true"
+     width="48px"
+     height="48px"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       id="GridFromPre046Settings"
+       type="xygrid"
+       originx="0px"
+       originy="0px"
+       spacingx="0.5px"
+       spacingy="0.5px"
+       color="#0000ff"
+       empcolor="#0000ff"
+       opacity="0.2"
+       empopacity="0.4"
+       empspacing="2" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata1311">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Insert Link</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Lapo Calamandrei</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>http://www.gnome.org</dc:source>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title />
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>insert</rdf:li>
+            <rdf:li>link</rdf:li>
+            <rdf:li>anchor</rdf:li>
+            <rdf:li>url</rdf:li>
+            <rdf:li>generic</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/Notice" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/ShareAlike" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/SourceCode" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <path
+       style="font-size:35.72286987px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:OpenSymbol"
+       d="m 22.262037,0.10915314 c -4.384088,-0.18421868 -8.739543,2.77142876 -9.92302,7.04665956 -0.71024,2.2061106 -0.823885,4.6398803 -0.104676,6.8591543 -2.5853428,3.193478 -3.533825,7.572766 -2.5771493,11.52294 0.9964963,4.724092 4.9551703,8.731929 9.7856723,9.43827 2.839974,0.521668 5.868554,0.120579 8.414738,-1.265929 1.308211,1.438038 3.380164,0.847857 5.084421,0.969528 1.848529,-0.07511 3.728756,0.159582 5.555902,-0.13581 2.18721,-0.556449 3.054266,-3.580237 1.492635,-5.210447 -1.433476,-1.633602 -2.845713,-3.285645 -4.265926,-4.930746 1.254825,-2.644737 2.127889,-5.509655 2.243766,-8.448749 0.254662,-1.328421 -0.64231,-3.154 -2.072298,-3.740938 -1.177601,-0.987442 -3.70229,0.554278 -4.188087,-0.73231 -0.04527,-2.3702084 0.09282,-4.7534204 -0.07331,-7.1151976 C 31.270678,2.4015118 29.162592,1.7876019 27.564268,1.1303439 25.872776,0.49114351 24.075768,0.09852728 22.262037,0.10915314 z"
+       id="path2404"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 15.5,30.40625 A 5.1024842,5.1024842 0 0 0 11.78125,39 l 8.5,9 a 5.1024842,5.1024842 0 0 0 7.4375,0 l 8.5,-9 A 5.1024842,5.1024842 0 0 0 32.5,30.40625 l -17,0 z"
+       id="path3178"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.30303049;marker:none;visibility:visible;display:inline;overflow:visible"
+       inkscape:original="M 15.5 35.5 L 24 44.5 L 32.5 35.5 L 15.5 35.5 z "
+       inkscape:radius="5.101974"
+       sodipodi:type="inkscape:offset"
+       transform="matrix(0.8864262,0,0,0.8864262,2.8437638,3.8974122)" />
+    <path
+       style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#303030;stroke-width:1.15504038;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:1.4;marker:none;visibility:visible;display:inline;overflow:visible"
+       d="m 16.583372,35.365547 15.069254,0 -7.534627,7.977829 -7.534627,-7.977829 z"
+       id="path4125"
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:31.66568565px;font-style:normal;font-weight:normal;fill:#303030;fill-opacity:1;stroke:#303030;stroke-width:2.92789221;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:OpenSymbol"
+       x="12.796861"
+       y="28.107506"
+       id="text3239"
+       transform="scale(0.93966043,1.0642142)"><tspan
+         sodipodi:role="line"
+         id="tspan3241"
+         x="12.796861"
+         y="28.107506"
+         style="stroke:#303030;stroke-width:2.92789221;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:DejaVu Sans">&amp;</tspan></text>
+  </g>
+</svg>
