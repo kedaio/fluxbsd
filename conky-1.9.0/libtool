@@ -40,7 +40,7 @@ available_tags=""
 # ### BEGIN LIBTOOL CONFIG
 
 # A sed program that does not truncate output.
-SED="/usr/bin/sed"
+SED="/usr/local/bin/gsed"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
 Xsed="$SED -e 1s/^X//"
@@ -81,13 +81,13 @@ PATH_SEPARATOR=":"
 
 # The host system.
 host_alias=
-host=x86_64-unknown-openbsd5.8
-host_os=openbsd5.8
+host=x86_64-unknown-openbsd5.9
+host_os=openbsd5.9
 
 # The build system.
 build_alias=
-build=x86_64-unknown-openbsd5.8
-build_os=openbsd5.8
+build=x86_64-unknown-openbsd5.9
+build_os=openbsd5.9
 
 # A BSD- or MS-compatible name lister.
 NM="/usr/bin/nm -B"
@@ -272,7 +272,7 @@ finish_eval=""
 hardcode_into_libs=no
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/gcc-lib/amd64-unknown-openbsd5.8/4.2.1 /usr/lib "
+sys_lib_search_path_spec="/usr/lib/gcc-lib/amd64-unknown-openbsd5.9/4.2.1 /usr/lib "
 
 # Run-time system search path for libraries.
 sys_lib_dlsearch_path_spec="/usr/lib"
@@ -353,7 +353,7 @@ module_cmds=""
 module_expsym_cmds=""
 
 # Whether we are building with GNU ld or not.
-with_gnu_ld="yes"
+with_gnu_ld="no"
 
 # Flag that allows shared libraries with undefined symbols to be built.
 allow_undefined_flag=""

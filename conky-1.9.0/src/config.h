@@ -103,9 +103,6 @@
 /* Define to 1 if you have the <glib-object.h> header file. */
 /* #undef HAVE_GLIB_OBJECT_H */
 
-/* Define if you have the iconv() function and it works. */
-#define HAVE_ICONV 1
-
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
@@ -234,9 +231,6 @@
 
 /* Define if you want support for IBM/Lenovo notebooks (SMAPI) */
 /* #undef IBM */
-
-/* Define as const if the declaration of iconv() needs const. */
-#define ICONV_CONST 
 
 /* Define if you want Imlib2 support */
 #define IMLIB2 1

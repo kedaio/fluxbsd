@@ -401,8 +401,8 @@ AMDEP_TRUE="" ac_aux_dir="."
 sed_quote_subst='s/\(["`$\\]\)/\\\1/g'
 double_quote_subst='s/\(["`\\]\)/\\\1/g'
 delay_variable_subst='s/\\\\\\\\\\\$/\\\\\\$/g'
-SED='/usr/bin/sed'
-Xsed='/usr/bin/sed -e 1s/^X//'
+SED='/usr/local/bin/gsed'
+Xsed='/usr/local/bin/gsed -e 1s/^X//'
 GREP='grep'
 EGREP='grep -E'
 FGREP='grep -F'
@@ -417,11 +417,11 @@ pic_mode='default'
 enable_fast_install='needless'
 PATH_SEPARATOR=':'
 host_alias=''
-host='x86_64-unknown-openbsd5.8'
-host_os='openbsd5.8'
+host='x86_64-unknown-openbsd5.9'
+host_os='openbsd5.9'
 build_alias=''
-build='x86_64-unknown-openbsd5.8'
-build_os='openbsd5.8'
+build='x86_64-unknown-openbsd5.9'
+build_os='openbsd5.9'
 NM='/usr/bin/nm -B'
 LN_S='ln -s'
 max_cmd_len='196608'
@@ -488,7 +488,7 @@ archive_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags'
 archive_expsym_cmds='$CC -shared $pic_flag -o $lib $libobjs $deplibs $compiler_flags ${wl}-retain-symbols-file,$export_symbols'
 module_cmds=''
 module_expsym_cmds=''
-with_gnu_ld='yes'
+with_gnu_ld='no'
 allow_undefined_flag=''
 no_undefined_flag=''
 hardcode_libdir_flag_spec='${wl}-rpath,$libdir'
@@ -523,7 +523,7 @@ postuninstall_cmds=''
 finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
 finish_eval=''
 hardcode_into_libs='no'
-sys_lib_search_path_spec='/usr/lib/gcc-lib/amd64-unknown-openbsd5.8/4.2.1 /usr/lib '
+sys_lib_search_path_spec='/usr/lib/gcc-lib/amd64-unknown-openbsd5.9/4.2.1 /usr/lib '
 sys_lib_dlsearch_path_spec='/usr/lib'
 hardcode_action='immediate'
 enable_dlopen='unknown'
@@ -721,15 +721,15 @@ s,@AMDEPBACKSLASH@,\,;t t
 s,@CCDEPMODE@,depmode=gcc3,;t t
 s,@am__fastdepCC_TRUE@,,;t t
 s,@am__fastdepCC_FALSE@,#,;t t
-s,@build@,x86_64-unknown-openbsd5.8,;t t
+s,@build@,x86_64-unknown-openbsd5.9,;t t
 s,@build_cpu@,x86_64,;t t
 s,@build_vendor@,unknown,;t t
-s,@build_os@,openbsd5.8,;t t
-s,@host@,x86_64-unknown-openbsd5.8,;t t
+s,@build_os@,openbsd5.9,;t t
+s,@host@,x86_64-unknown-openbsd5.9,;t t
 s,@host_cpu@,x86_64,;t t
 s,@host_vendor@,unknown,;t t
-s,@host_os@,openbsd5.8,;t t
-s,@SED@,/usr/bin/sed,;t t
+s,@host_os@,openbsd5.9,;t t
+s,@SED@,/usr/local/bin/gsed,;t t
 s,@EGREP@,grep -E,;t t
 s,@FGREP@,grep -F,;t t
 s,@GREP@,grep,;t t
@@ -769,8 +769,8 @@ s,@BUILD_FREEBSD_TRUE@,#,;t t
 s,@BUILD_FREEBSD_FALSE@,,;t t
 s,@BUILD_OPENBSD_TRUE@,,;t t
 s,@BUILD_OPENBSD_FALSE@,#,;t t
-s,@BUILD_DATE@,Sat Jun 27 20:25:26 CST 2015,;t t
-s,@BUILD_ARCH@,OpenBSD 5.8 (amd64),;t t
+s,@BUILD_DATE@,Mon Mar 28 04:24:15 CST 2016,;t t
+s,@BUILD_ARCH@,OpenBSD 5.9 (amd64),;t t
 s,@BUILD_CONFIG_OUTPUT_TRUE@,#,;t t
 s,@BUILD_CONFIG_OUTPUT_FALSE@,,;t t
 s,@BUILD_NCURSES_TRUE@,,;t t
@@ -840,10 +840,8 @@ s,@BUILD_WLAN_TRUE@,#,;t t
 s,@BUILD_WLAN_FALSE@,,;t t
 s,@BUILD_PORT_MONITORS_TRUE@,#,;t t
 s,@BUILD_PORT_MONITORS_FALSE@,,;t t
-s,@LIBICONV@,-liconv,;t t
-s,@LTLIBICONV@,-liconv,;t t
-s,@BUILD_ICONV_TRUE@,,;t t
-s,@BUILD_ICONV_FALSE@,#,;t t
+s,@BUILD_ICONV_TRUE@,#,;t t
+s,@BUILD_ICONV_FALSE@,,;t t
 s,@Xext_CFLAGS@,-I/usr/X11R6/include,;t t
 s,@Xext_LIBS@,-L/usr/X11R6/lib -lXext,;t t
 s,@XDamage_CFLAGS@,-I/usr/X11R6/include,;t t
@@ -866,7 +864,7 @@ s,@xsltproc_cmd@,xsltproc,;t t
 s,@HAVE_DOCSTUFF_TRUE@,,;t t
 s,@HAVE_DOCSTUFF_FALSE@,#,;t t
 s,@conky_CFLAGS@, -I/usr/X11R6/include -I/usr/local/include -I/usr/X11R6/include/freetype2 -I/usr/X11R6/include -I/usr/local/include/lua-5.1  -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include -I/usr/X11R6/include/freetype2 -I/usr/include -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include -I/usr/local/include -I/usr/local/include/libxml2 -I/usr/local/include -Wall -W,;t t
-s,@conky_LIBS@, -lncurses -lm -L/usr/X11R6/lib -lX11 -L/usr/local/lib -L/usr/X11R6/lib -lImlib2 -lfreetype -lz -lX11 -lXext -lm -L/usr/local/lib -llua5.1 -lm  -ltolua++  -liconv -L/usr/X11R6/lib -lXext -L/usr/X11R6/lib -lXdamage -lXfixes -L/usr/X11R6/lib -lXft -L/usr/local/lib -lglib-2.0 -lintl -L/usr/local/lib -lcurl -L/usr/local/lib -lxml2 -lkvm -lossaudio -ltolua++ ,;t t
+s,@conky_LIBS@, -lncurses -lm -L/usr/X11R6/lib -lX11 -L/usr/local/lib -L/usr/X11R6/lib -lImlib2 -lfreetype -lz -lX11 -lXext -lm -L/usr/local/lib -llua5.1 -lm  -ltolua++  -L/usr/X11R6/lib -lXext -L/usr/X11R6/lib -lXdamage -lXfixes -L/usr/X11R6/lib -lXft -L/usr/local/lib -lglib-2.0 -lintl -L/usr/local/lib -lcurl -L/usr/local/lib -lxml2 -lkvm -lossaudio -ltolua++ ,;t t
 s,@LIBOBJS@,,;t t
 s,@LTLIBOBJS@,,;t t
 CEOF
@@ -1210,11 +1208,11 @@ ${ac_dA}LUA_EXTRAS${ac_dB}LUA_EXTRAS${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_LUA_CAIRO${ac_dB}HAVE_LUA_CAIRO${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_LUA_IMLIB2${ac_dB}HAVE_LUA_IMLIB2${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_LUA${ac_dB}HAVE_LUA${ac_dC}1${ac_dD}
-${ac_dA}HAVE_ICONV${ac_dB}HAVE_ICONV${ac_dC}1${ac_dD}
-${ac_dA}ICONV_CONST${ac_dB}ICONV_CONST${ac_dC}${ac_dD}
 ${ac_dA}HAVE_XDBE${ac_dB}HAVE_XDBE${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_XDAMAGE${ac_dB}HAVE_XDAMAGE${ac_dC}1${ac_dD}
 ${ac_dA}XFT${ac_dB}XFT${ac_dC}1${ac_dD}
+${ac_dA}HAVE_CURL${ac_dB}HAVE_CURL${ac_dC}1${ac_dD}
+${ac_dA}HAVE_SIGNAL_H${ac_dB}HAVE_SIGNAL_H${ac_dC}1${ac_dD}
 CEOF
   sed -f $tmp/defines.sed $tmp/in >$tmp/out
   rm -f $tmp/in
@@ -1224,8 +1222,6 @@ CEOF
 /^[	 ]*#[	 ]*define/!b
 t clr
 : clr
-${ac_dA}HAVE_CURL${ac_dB}HAVE_CURL${ac_dC}1${ac_dD}
-${ac_dA}HAVE_SIGNAL_H${ac_dB}HAVE_SIGNAL_H${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_UNISTD_H${ac_dB}HAVE_UNISTD_H${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_SYS_UTSNAME_H${ac_dB}HAVE_SYS_UTSNAME_H${ac_dC}1${ac_dD}
 ${ac_dA}HAVE_SYS_STAT_H${ac_dB}HAVE_SYS_STAT_H${ac_dC}1${ac_dD}
@@ -1296,11 +1292,11 @@ ${ac_uA}LUA_EXTRAS${ac_uB}LUA_EXTRAS${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_LUA_CAIRO${ac_uB}HAVE_LUA_CAIRO${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_LUA_IMLIB2${ac_uB}HAVE_LUA_IMLIB2${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_LUA${ac_uB}HAVE_LUA${ac_uC}1${ac_uD}
-${ac_uA}HAVE_ICONV${ac_uB}HAVE_ICONV${ac_uC}1${ac_uD}
-${ac_uA}ICONV_CONST${ac_uB}ICONV_CONST${ac_uC}${ac_uD}
 ${ac_uA}HAVE_XDBE${ac_uB}HAVE_XDBE${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_XDAMAGE${ac_uB}HAVE_XDAMAGE${ac_uC}1${ac_uD}
 ${ac_uA}XFT${ac_uB}XFT${ac_uC}1${ac_uD}
+${ac_uA}HAVE_CURL${ac_uB}HAVE_CURL${ac_uC}1${ac_uD}
+${ac_uA}HAVE_SIGNAL_H${ac_uB}HAVE_SIGNAL_H${ac_uC}1${ac_uD}
 CEOF
   sed -f $tmp/undefs.sed $tmp/in >$tmp/out
   rm -f $tmp/in
@@ -1310,8 +1306,6 @@ CEOF
 /^[	 ]*#[	 ]*undef/!b
 t clr
 : clr
-${ac_uA}HAVE_CURL${ac_uB}HAVE_CURL${ac_uC}1${ac_uD}
-${ac_uA}HAVE_SIGNAL_H${ac_uB}HAVE_SIGNAL_H${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_UNISTD_H${ac_uB}HAVE_UNISTD_H${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_SYS_UTSNAME_H${ac_uB}HAVE_SYS_UTSNAME_H${ac_uC}1${ac_uD}
 ${ac_uA}HAVE_SYS_STAT_H${ac_uB}HAVE_SYS_STAT_H${ac_uC}1${ac_uD}

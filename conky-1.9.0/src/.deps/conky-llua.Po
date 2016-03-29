@@ -5,9 +5,9 @@ conky-llua.o conky-llua.o: llua.c conky.h config.h common.h \
   /usr/include/sys/endian.h /usr/include/sys/_endian.h \
   /usr/include/machine/endian.h /usr/include/sys/select.h \
   /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
-  /usr/include/stdlib.h /usr/include/string.h /usr/include/sys/socket.h \
-  /usr/include/sys/uio.h text_object.h specials.h \
-  /usr/include/sys/utsname.h /usr/include/arpa/inet.h mpd.h \
+  /usr/include/stdlib.h /usr/include/string.h /usr/include/strings.h \
+  /usr/include/sys/socket.h /usr/include/sys/uio.h text_object.h \
+  specials.h /usr/include/sys/utsname.h /usr/include/arpa/inet.h mpd.h \
   ccurl_thread.h timed_thread.h rss.h sony.h llua.h \
   /usr/local/include/lua-5.1/lua.h /usr/include/stdarg.h \
   /usr/include/stddef.h /usr/local/include/lua-5.1/luaconf.h \
@@ -19,17 +19,18 @@ conky-llua.o conky-llua.o: llua.c conky.h config.h common.h \
   /usr/X11R6/include/X11/Xosdefs.h /usr/X11R6/include/X11/Xatom.h \
   /usr/X11R6/include/X11/Xft/Xft.h \
   /usr/X11R6/include/freetype2/ft2build.h \
-  /usr/X11R6/include/freetype2/config/ftheader.h \
-  /usr/X11R6/include/freetype2/freetype.h \
-  /usr/X11R6/include/freetype2/config/ftconfig.h \
-  /usr/X11R6/include/freetype2/config/ftoption.h \
-  /usr/X11R6/include/freetype2/config/ftstdlib.h /usr/include/setjmp.h \
-  /usr/include/machine/setjmp.h /usr/X11R6/include/freetype2/fttypes.h \
-  /usr/X11R6/include/freetype2/ftsystem.h \
-  /usr/X11R6/include/freetype2/ftimage.h \
-  /usr/X11R6/include/freetype2/fterrors.h \
-  /usr/X11R6/include/freetype2/ftmoderr.h \
-  /usr/X11R6/include/freetype2/fterrdef.h \
+  /usr/X11R6/include/freetype2/freetype/config/ftheader.h \
+  /usr/X11R6/include/freetype2/freetype/freetype.h \
+  /usr/X11R6/include/freetype2/freetype/config/ftconfig.h \
+  /usr/X11R6/include/freetype2/freetype/config/ftoption.h \
+  /usr/X11R6/include/freetype2/freetype/config/ftstdlib.h \
+  /usr/include/setjmp.h /usr/include/machine/setjmp.h \
+  /usr/X11R6/include/freetype2/freetype/fttypes.h \
+  /usr/X11R6/include/freetype2/freetype/ftsystem.h \
+  /usr/X11R6/include/freetype2/freetype/ftimage.h \
+  /usr/X11R6/include/freetype2/freetype/fterrors.h \
+  /usr/X11R6/include/freetype2/freetype/ftmoderr.h \
+  /usr/X11R6/include/freetype2/freetype/fterrdef.h \
   /usr/X11R6/include/fontconfig/fontconfig.h /usr/include/sys/stat.h \
   /usr/X11R6/include/X11/extensions/Xrender.h \
   /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/keysym.h \
@@ -77,6 +78,8 @@ common.h:
 /usr/include/stdlib.h:
 
 /usr/include/string.h:
+
+/usr/include/strings.h:
 
 /usr/include/sys/socket.h:
 
@@ -140,31 +143,31 @@ x11.h:
 
 /usr/X11R6/include/freetype2/ft2build.h:
 
-/usr/X11R6/include/freetype2/config/ftheader.h:
+/usr/X11R6/include/freetype2/freetype/config/ftheader.h:
 
-/usr/X11R6/include/freetype2/freetype.h:
+/usr/X11R6/include/freetype2/freetype/freetype.h:
 
-/usr/X11R6/include/freetype2/config/ftconfig.h:
+/usr/X11R6/include/freetype2/freetype/config/ftconfig.h:
 
-/usr/X11R6/include/freetype2/config/ftoption.h:
+/usr/X11R6/include/freetype2/freetype/config/ftoption.h:
 
-/usr/X11R6/include/freetype2/config/ftstdlib.h:
+/usr/X11R6/include/freetype2/freetype/config/ftstdlib.h:
 
 /usr/include/setjmp.h:
 
 /usr/include/machine/setjmp.h:
 
-/usr/X11R6/include/freetype2/fttypes.h:
+/usr/X11R6/include/freetype2/freetype/fttypes.h:
 
-/usr/X11R6/include/freetype2/ftsystem.h:
+/usr/X11R6/include/freetype2/freetype/ftsystem.h:
 
-/usr/X11R6/include/freetype2/ftimage.h:
+/usr/X11R6/include/freetype2/freetype/ftimage.h:
 
-/usr/X11R6/include/freetype2/fterrors.h:
+/usr/X11R6/include/freetype2/freetype/fterrors.h:
 
-/usr/X11R6/include/freetype2/ftmoderr.h:
+/usr/X11R6/include/freetype2/freetype/ftmoderr.h:
 
-/usr/X11R6/include/freetype2/fterrdef.h:
+/usr/X11R6/include/freetype2/freetype/fterrdef.h:
 
 /usr/X11R6/include/fontconfig/fontconfig.h:
 

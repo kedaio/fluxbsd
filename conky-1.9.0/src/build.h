@@ -3,7 +3,7 @@
 
 /* Conky build info */
 
-#define BUILD_DATE "Sat Jun 27 20:25:26 CST 2015"
-#define BUILD_ARCH "OpenBSD 5.8 (amd64)"
+#define BUILD_DATE "Mon Mar 28 04:24:15 CST 2016"
+#define BUILD_ARCH "OpenBSD 5.9 (amd64)"
 
 #endif /* __BUILD_H */

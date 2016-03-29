@@ -5,13 +5,13 @@ libcairo_la-libcairo.lo libcairo_la-libcairo.o: libcairo.c \
   /usr/include/sys/_endian.h /usr/include/sys/_types.h \
   /usr/include/machine/endian.h /usr/include/sys/select.h \
   /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
-  /usr/include/string.h /usr/local/include/tolua++.h \
-  /usr/local/include/lua-5.1/lua.h /usr/include/stdarg.h \
-  /usr/include/stddef.h /usr/local/include/lua-5.1/luaconf.h \
-  /usr/include/limits.h /usr/include/sys/limits.h \
-  /usr/include/machine/limits.h /usr/include/sys/syslimits.h \
-  /usr/local/include/lua-5.1/lauxlib.h /usr/include/stdio.h \
-  /usr/local/include/lua-5.1/lua.h \
+  /usr/include/string.h /usr/include/strings.h \
+  /usr/local/include/tolua++.h /usr/local/include/lua-5.1/lua.h \
+  /usr/include/stdarg.h /usr/include/stddef.h \
+  /usr/local/include/lua-5.1/luaconf.h /usr/include/limits.h \
+  /usr/include/sys/limits.h /usr/include/machine/limits.h \
+  /usr/include/sys/syslimits.h /usr/local/include/lua-5.1/lauxlib.h \
+  /usr/include/stdio.h /usr/local/include/lua-5.1/lua.h \
   /usr/local/include/cairo/cairo-features.h \
   /usr/local/include/cairo/cairo-deprecated.h \
   /usr/local/include/cairo/cairo.h \
@@ -50,6 +50,8 @@ libcairo_la-libcairo.lo libcairo_la-libcairo.o: libcairo.c \
 /usr/include/sys/_time.h:
 
 /usr/include/string.h:
+
+/usr/include/strings.h:
 
 /usr/local/include/tolua++.h:
 

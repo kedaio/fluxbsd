@@ -5,15 +5,16 @@ libimlib2_la-libimlib2.lo libimlib2_la-libimlib2.o: libimlib2.c \
   /usr/include/sys/_endian.h /usr/include/sys/_types.h \
   /usr/include/machine/endian.h /usr/include/sys/select.h \
   /usr/include/sys/time.h /usr/include/time.h /usr/include/sys/_time.h \
-  /usr/include/string.h /usr/local/include/tolua++.h \
-  /usr/local/include/lua-5.1/lua.h /usr/include/stdarg.h \
-  /usr/include/stddef.h /usr/local/include/lua-5.1/luaconf.h \
-  /usr/include/limits.h /usr/include/sys/limits.h \
-  /usr/include/machine/limits.h /usr/include/sys/syslimits.h \
-  /usr/local/include/lua-5.1/lauxlib.h /usr/include/stdio.h \
-  /usr/local/include/lua-5.1/lua.h /usr/local/include/Imlib2.h \
-  /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
-  /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h
+  /usr/include/string.h /usr/include/strings.h \
+  /usr/local/include/tolua++.h /usr/local/include/lua-5.1/lua.h \
+  /usr/include/stdarg.h /usr/include/stddef.h \
+  /usr/local/include/lua-5.1/luaconf.h /usr/include/limits.h \
+  /usr/include/sys/limits.h /usr/include/machine/limits.h \
+  /usr/include/sys/syslimits.h /usr/local/include/lua-5.1/lauxlib.h \
+  /usr/include/stdio.h /usr/local/include/lua-5.1/lua.h \
+  /usr/local/include/Imlib2.h /usr/X11R6/include/X11/Xlib.h \
+  /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+  /usr/X11R6/include/X11/Xosdefs.h
 
 /usr/include/stdlib.h:
 
@@ -42,6 +43,8 @@ libimlib2_la-libimlib2.lo libimlib2_la-libimlib2.o: libimlib2.c \
 /usr/include/sys/_time.h:
 
 /usr/include/string.h:
+
+/usr/include/strings.h:
 
 /usr/local/include/tolua++.h:
 

@@ -1,8 +1,8 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>conky</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry" title="conky"><a name="idp260032"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>conky &#8212; A system monitor for X originally based on the
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>conky</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="idp267907824"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>conky &#8212; A system monitor for X originally based on the
 			torsmo code, but more kickass. It just keeps on given'er.
-			Yeah.</p></div><div class="refsynopsisdiv" title="Synopsis"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">conky</code>  [
+			Yeah.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">conky</code>  [
 				<em class="replaceable"><code>options</code></em>
-			]</p></div></div><div class="refsect1" title="Description"><a name="idp163616"></a><h2>Description</h2><p>Conky is a system monitor for X originally based on
+			]</p></div></div><div class="refsect1"><a name="idm1513871632"></a><h2>Description</h2><p>Conky is a system monitor for X originally based on
 			torsmo. Since its inception, Conky has changed
 			significantly from its predecessor, while maintaining
 			simplicity and configurability. Conky can display just
@@ -25,7 +25,7 @@
 			requests, and submit patches, or stop by #conky on
 			irc.freenode.net if you have questions or want to
 			contribute.</p><p>Thanks for your interest in Conky.
-		</p></div><div class="refsect1" title="Compiling"><a name="idp167280"></a><h2>Compiling</h2><p>For users compiling from source on a binary distro,
+		</p></div><div class="refsect1"><a name="idm1479982352"></a><h2>Compiling</h2><p>For users compiling from source on a binary distro,
 			make sure you have the X development libraries installed
 			(Unless you provide configure with "--disable-x11"). This
 			should be a package along the lines of "libx11-dev" or
@@ -50,7 +50,7 @@
 		</p><p>Example to compile and run Conky with all optional
 			components (note that some configure options may differ for
 			your system):
-		</p><div class="variablelist"><dl><dt><span class="term">
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 					<span class="command"><strong>
 						<code class="option">sh autogen.sh</code>
 					</strong></span>
@@ -87,16 +87,16 @@
 			however it has not been tested with anything other than
 			gcc, and is not guaranteed to work with other
 			compilers.
-		</p><p></p></div><div class="refsect1" title="You Should Know"><a name="idp94032"></a><h2>You Should Know</h2><p>Conky is generally very good on resources. That said,
+		</p><p></p></div><div class="refsect1"><a name="idp1544530544"></a><h2>You Should Know</h2><p>Conky is generally very good on resources. That said,
 			the more you try to make Conky do, the more resources it is
 			going to consume.
 		</p><p>An easy way to force Conky to reload your ~/.conkyrc:
 			"killall -SIGUSR1 conky". Saves you the trouble of having
 			to kill and then restart. You can now also do the same with
 			SIGHUP.
-		</p></div><div class="refsect1" title="Options"><a name="idp95968"></a><h2>Options</h2><p>Command line options override configurations defined in
+		</p></div><div class="refsect1"><a name="idp1000207728"></a><h2>Options</h2><p>Command line options override configurations defined in
 			configuration file.
-		</p><div class="variablelist"><dl><dt><span class="term">
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
             <span class="command"><strong>
                 <code class="option">-v | -V | --version</code>
             </strong></span>
@@ -208,14 +208,14 @@
             </strong></span>
             <code class="option">COUNT</code>
         </span></dt><dd>Number of times to update Conky (and quit) 
-        <p></p></dd></dl></div></div><div class="refsect1" title="Configuration Settings"><a name="idp5518080"></a><h2>Configuration Settings</h2><p>Default configuration file location is $HOME/.conkyrc or
+        <p></p></dd></dl></div></div><div class="refsect1"><a name="idp1000266736"></a><h2>Configuration Settings</h2><p>Default configuration file location is $HOME/.conkyrc or
 			${sysconfdir}/conky/conky.conf. On most systems, sysconfdir is
 			/etc, and you can find the sample config file there
 			(/etc/conky/conky.conf).
 		</p><p>You might want to copy it to $HOME/.conkyrc and then
 			start modifying it. Other configs can be found at
 			http://conky.sf.net/
-		</p><div class="variablelist"><dl><dt><span class="term">
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
             <span class="command"><strong>
                 <code class="option">TEXT</code>
             </strong></span>
@@ -815,7 +815,7 @@
                 <code class="option">xftfont</code>
             </strong></span>
         </span></dt><dd>Xft font to use. 
-        <p></p></dd></dl></div></div><div class="refsect1" title="Objects/Variables"><a name="idp5969728"></a><h2>Objects/Variables</h2><p>Colours are parsed using XParsecolor(), there might be a
+        <p></p></dd></dl></div></div><div class="refsect1"><a name="idm781013776"></a><h2>Objects/Variables</h2><p>Colours are parsed using XParsecolor(), there might be a
 			list of them: /usr/share/X11/rgb.txt. 
 			Colour can be also in
 			#rrggbb format (hex).
@@ -828,7 +828,7 @@
 			as a 'key', so that you only have 1 relevant thread running (for
 			example, the $curl, $rss and $weather objects launch one thread per
 			URI).
-		</p><div class="variablelist"><dl><dt><span class="term">
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
             <span class="command"><strong>
                 <code class="option">acpiacadapter</code>
             </strong></span>
@@ -3047,7 +3047,7 @@
             definitions:</p><table border="0" summary="Simple list" class="simplelist"><tr><td>template0 $\1\2</td></tr><tr><td>template1 \1: ${fs_used \2} / ${fs_size
                 \2}</td></tr><tr><td>template2 \1 \2</td></tr></table><p>The following list shows sample usage of the
             templates defined above, with the equivalent syntax
-            when not using any template at all:</p><div class="table"><a name="idp6839776"></a><p class="title"><b>Table 1. </b></p><div class="table-contents"><table border="1"><colgroup><col><col></colgroup><thead><tr><th>using template</th><th>same without template</th></tr></thead><tbody><tr><td>${template0 node name}</td><td>$nodename</td></tr><tr><td>${template1 root /}</td><td>root: ${fs_free /} / ${fs_size
+            when not using any template at all:</p><div class="table"><a name="idp651036656"></a><p class="title"><b>Table 1. </b></p><div class="table-contents"><table class="table" border="1"><colgroup><col><col></colgroup><thead><tr><th>using template</th><th>same without template</th></tr></thead><tbody><tr><td>${template0 node name}</td><td>$nodename</td></tr><tr><td>${template1 root /}</td><td>root: ${fs_free /} / ${fs_size
                             /}</td></tr><tr><td>
                                 ${template1
                                 ${template2\ disk\ root}
@@ -3575,7 +3575,7 @@
                 <code class="option">xmms2_url</code>
             </strong></span>
         </span></dt><dd>Full path to current song 
-        <p></p></dd></dl></div></div><div class="refsect1" title="Lua API"><a name="idp8083456"></a><h2>Lua API</h2><p>Conky features a Lua Programming API, and also ships with Lua
+        <p></p></dd></dl></div></div><div class="refsect1"><a name="idm251907216"></a><h2>Lua API</h2><p>Conky features a Lua Programming API, and also ships with Lua
 			bindings for some useful libraries. Conky defines certain global
 			functions and variables which can be accessed from Lua code running
 			in Conky.
@@ -3595,7 +3595,7 @@
 			NOTE: In order to accommodate certain features in the cairo
 			library's API, Conky will export a few additional functions for the
 			creation of certain structures.  These are documented below.
-		</p><div class="variablelist"><dl><dt><span class="term">
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
             <span class="command"><strong>
                 <code class="option">conky_parse(string)</code>
             </strong></span>
@@ -3730,7 +3730,7 @@
             <code class="option">function</code>
         </span></dt><dd><p>
 				Call this function to return a new cairo_matrix_t structure.  A creation function for this structure is not provided by the cairo API.  After calling this, you should use tolua.takeownership() on the return value to ensure ownership is passed properly.
-			</p></dd></dl></div></div><div class="refsect1" title="Examples"><a name="idp8217968"></a><h2>Examples</h2><div class="variablelist"><dl><dt><span class="term">
+			</p></dd></dl></div></div><div class="refsect1"><a name="idm790199440"></a><h2>Examples</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 					<code class="varname">conky</code>
 					<code class="option">-t '${time %D %H:%M}' -o -u 30</code>
 				</span></dt><dd>Start Conky in its own window with date
@@ -3744,7 +3744,7 @@
 					<code class="option">-C &gt; ~/.conkyrc</code>
 				</span></dt><dd>Do not start Conky, but have it output
 					the builtin default config file to ~/.conkyrc for
-					later customising.</dd></dl></div></div><div class="refsect1" title="Files"><a name="idp8225408"></a><h2>Files</h2><div class="variablelist"><dl><dt><span class="term">
+					later customising.</dd></dl></div></div><div class="refsect1"><a name="idm1845177232"></a><h2>Files</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 					<code class="filename">
 						${sysconfdir}/conky/conky.conf</code>
 				</span></dt><dd>Default system-wide configuration file.
@@ -3752,7 +3752,7 @@
 					compile-time options (most likely /etc).</dd><dt><span class="term">
 					<code class="filename">~/.conkyrc</code>
 				</span></dt><dd>Default personal configuration
-					file.</dd></dl></div></div><div class="refsect1" title="Bugs"><a name="idp8230496"></a><h2>Bugs</h2><p>Drawing to root or some other desktop window directly
+					file.</dd></dl></div></div><div class="refsect1"><a name="idm1845177360"></a><h2>Bugs</h2><p>Drawing to root or some other desktop window directly
 			doesn't work with all window managers. Especially doesn't
 			work well with Gnome and it has been reported that it
 			doesn't work with KDE either. Nautilus can be disabled from
@@ -3763,7 +3763,7 @@
 			You can also use -o argument which makes Conky to create
 			its own window. If you do try running Conky in its own
 			window, be sure to read up on the own_window_type settings
-			and experiment.</p></div><div class="refsect1" title="See Also"><a name="idp8232368"></a><h2>See Also</h2><p>
+			and experiment.</p></div><div class="refsect1"><a name="idm777666576"></a><h2>See Also</h2><p>
 			<a class="ulink" href="http://conky.sourceforge.net/" target="_top">
 				http://conky.sourceforge.net/</a>
 		</p><p>
@@ -3772,12 +3772,12 @@
 		</p><p>
 			<a class="ulink" href="http://wiki.conky.be" target="_top">
 				http://wiki.conky.be</a>
-		</p><p>#conky on irc.freenode.net</p></div><div class="refsect1" title="Copying"><a name="idp8236928"></a><h2>Copying</h2><p>Copyright (c) 2005-2010 Brenden Matthews, Philip
+		</p><p>#conky on irc.freenode.net</p></div><div class="refsect1"><a name="idm777670544"></a><h2>Copying</h2><p>Copyright (c) 2005-2010 Brenden Matthews, Philip
 			Kovacs, et. al. Any original torsmo code is licensed under
 			the BSD license (see LICENSE.BSD for a copy). All code
 			written since the fork of torsmo is licensed under the GPL
 			(see LICENSE.GPL for a copy), except where noted
 			differently (such as in portmon code, timed thread code,
 			and audacious code which are LGPL, and prss which is an
-			MIT-style license).</p></div><div class="refsect1" title="Authors"><a name="idp8238560"></a><h2>Authors</h2><p>The Conky dev team (see AUTHORS for a full list of
+			MIT-style license).</p></div><div class="refsect1"><a name="idp2199180528"></a><h2>Authors</h2><p>The Conky dev team (see AUTHORS for a full list of
 			contributors).</p></div></div></body></html>
