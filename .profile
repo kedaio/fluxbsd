@@ -9,3 +9,4 @@ alias ls='colorls -G'
 alias vi='/usr/local/bin/vim'
 export PS1='[\e[1;31m\u\e[0m@\e[0;36m\h\e[0m \w]$ '
 export LC_ALL='en_US.UTF-8'
+export PKG_PATH=https://mirrors.tuna.tsinghua.edu.cn/OpenBSD/$(uname -r)/packages/$(uname -m)/

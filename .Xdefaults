@@ -31,7 +31,7 @@ URxvt*termName: rxvt-256color
 urxvt.xftAntialias: true
 URxvt.colorUL: #ffaf5f
 URxvt.perl-ext-common:  default,matcher
-URxvt.url-launcher:      /usr/local/bin/firefox
+URxvt.url-launcher:      /usr/local/bin/xombrero
 URxvt.matcher.button:   1
 urxvt.foreground: 	#E8DFD6
 urxvt.background: 	#0a0B0c
