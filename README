@@ -1,8 +1,30 @@
 Here is some configuration files to configure fluxbox window manager on OpenBSD 
 stuff included are package list, dot files, fonts and alike
 
+##  this config is for OpenBSD, not any Linux distros
+##  tested on OpenBSD 6.0, should work on other BSDs, but not tested
+
+How to install or use this config:
+
+step 1: clone this repo
+	git clone https://github.com/kedaio/fluxbsd
+
+step 2: switch to root and then go the fluxbsd directory
+
+step 3: chmod +x install.sh
+
+step 4: run install script: ./install.sh
+
+step 5: on console, run startx command to start fluxbox window manager
+
+
 #===========================================
 #
-#  Work in Progress 
+#  TODO:
+
+#	1. add/fix mutt email client
+#	2. add conky
+#	3. other features, who knows
+#
 #
 #===========================================
