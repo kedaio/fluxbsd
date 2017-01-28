@@ -1,5 +1,5 @@
 #!/bin/ksh
-pkgs="git fluxbox colorls gohufont scim-fcitx scrot feh zh-wqy-zenhei-ttf xombrero"
+pkgs="git gthumb pcmanfm p7zip fluxbox colorls gohufont scim-fcitx scrot feh zh-wqy-zenhei-ttf xombrero vim-7.4.1467p1-no_x11-perl-python-ruby"
 
 if [[ $SHELL != "*bash" ]]; then
 	uid=$(id | grep -o 'uid=[0-9]*' | awk -F"=" '{print $2}')
@@ -29,7 +29,7 @@ fi
 
 echo "copying stuff to $HOME ..."
 
-for i in .tmux.conf .profile .Xdefaults .xinitrc .fluxbox
+for i in .tmux.conf .profile .Xdefaults .xinitrc .fluxbox .icons .themes .config .gtkrc-2.0
 do
 	if [[ -f $HOME/$i ]]; then
 		mv $HOME/$i $HOME/$i.bak.$$
