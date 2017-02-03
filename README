@@ -9,14 +9,35 @@ How to install or use this config:
 step 1: clone this repo
 	git clone https://github.com/kedaio/fluxbsd
 
-step 2: switch to root and then go the fluxbsd directory
+step 2: config doas, if you haven't done so already
+	if you're new to to doas, you can simply add a line to /etc/doas.conf: 
+	permit nopass $USER
 
-step 3: chmod +x install.sh
+	where $USER is your username. create /etc/doas.conf, if it doesn't exist
+
+step 3: go to fluxbsd folder, and run chmod +x install.sh
 
 step 4: run install script: ./install.sh
 
 step 5: on console, run startx command to start fluxbox window manager
 
+
+How to customize to your taste:
+
+	a) change wallpaper
+		replace the picture path in $HOME/.fluxbox/startup with your own picture
+		fbsetbg -u feh ~/.fluxbox/backgrounds/block_23-1440x900.jpg
+
+	b) fluxbox styles
+		download styles and put it in $HOME/.fluxbox/styles folder, then use
+		fluxbox menu to pick your own style
+
+	c) gtk2 theme and icon
+		download your theme/icon pack and place them under $HOME/.themes or $HOME/.icons
+		then edit $HOME/.gtkrc-2.0 file to specify then the theme and icon you want
+
+	d) terminal fonts/size
+		edit $HOME/.Xdefaults file to customize them (make sure fonts are installed before use them)
 
 #===========================================
 #
@@ -28,3 +49,5 @@ step 5: on console, run startx command to start fluxbox window manager
 #
 #
 #===========================================
+
+
