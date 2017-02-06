@@ -16,8 +16,8 @@
 #     session.menuFile: ~/.fluxbox/my-menu
 [begin] (Fluxbox-1.3.7)
 [encoding] {UTF-8}
-      [exec] (Eterm) {Eterm}
-      [exec] (firefox) {firefox}
+      [exec] (URXVT) {urxvt}
+      [exec] (xombrero) {xombrero}
       [exec]   (Run) {fbrun}
 [submenu] (Terminals)
       [exec]   (xterm) {xterm}
@@ -26,12 +26,7 @@
       [exec]   (gnome-terminal) {gnome-terminal}
       [exec]   (multi-gnome-terminal) {multi-gnome-terminal}
       [exec]   (Eterm) {Eterm}
-      [exec]   (konsole) {konsole}
-      [exec]   (aterm) {aterm}
-      [exec]   (mlterm) {mlterm}
-      [exec]   (multi-aterm) {multi-aterm}
       [exec]   (rxvt) {rxvt}
-      [exec]   (mrxvt) {mrxvt}
       [exec]   (lxterminal) {lxterminal}
 [end]
 [submenu] (Net)
