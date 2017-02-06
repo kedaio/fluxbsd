@@ -1,5 +1,5 @@
 #!/bin/ksh
-pkgs="git gthumb pcmanfm p7zip fluxbox colorls gohufont scim-fcitx scrot feh zh-wqy-zenhei-ttf xombrero vim-7.4.1467p1-no_x11-perl-python-ruby"
+pkgs="rxvt-unicode gthumb pcmanfm p7zip fluxbox colorls gohufont scim-fcitx scrot feh zh-wqy-zenhei-ttf xombrero vim-7.4.1467p1-no_x11-perl-python-ruby"
 
 if [[ $PKG_PATH == "" ]]; then
 	 export PKG_PATH=https://mirrors.tuna.tsinghua.edu.cn/OpenBSD/$(uname -r)/packages/$(uname -m)/
@@ -33,10 +33,10 @@ done
 
 for i in .icons .themes .config .fluxbox
 do
-	if [[ -d $i ]]; then
+	if [[ -d $HOME/$i ]]; then
 		cp -R $i/* $HOME/$i/
 	else
-		cp -R $i/* $HOME/$i
+		cp -R $i $HOME
 	fi
 
 done
