@@ -11,7 +11,7 @@ step 1: clone this repo
 
 step 2: config doas, if you haven't done so already
 	if you're new to to doas, you can simply add a line to /etc/doas.conf: 
-	permit nopass $USER
+	permit nopass keepenv $USER
 
 	where $USER is your username. create /etc/doas.conf, if it doesn't exist
 
@@ -38,6 +38,10 @@ How to customize to your taste:
 
 	d) terminal fonts/size
 		edit $HOME/.Xdefaults file to customize them (make sure fonts are installed before use them)
+
+
+	e) gtk3 theme and icon
+		edit $HOME/.config/gtk-3.0/settings.ini file
 
 #===========================================
 #

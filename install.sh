@@ -2,7 +2,7 @@
 pkgs="git gthumb pcmanfm p7zip fluxbox colorls gohufont scim-fcitx scrot feh zh-wqy-zenhei-ttf xombrero vim-7.4.1467p1-no_x11-perl-python-ruby"
 
 if [[ $PKG_PATH == "" ]]; then
-	export PKG_PATH=https://mirrors.tuna.tsinghua.edu.cn/OpenBSD/$(uname -r)/packages/$(uname -m)/
+	 export PKG_PATH=https://mirrors.tuna.tsinghua.edu.cn/OpenBSD/$(uname -r)/packages/$(uname -m)/
 fi 
 
 if [[ ! -f /etc/doas.conf ]]; then
@@ -11,7 +11,8 @@ if [[ ! -f /etc/doas.conf ]]; then
 fi
 echo "installing packages $pkgs ... "
 echo "   and it may take a few minutes, depends on your internet speed"
-doas pkg_add -v "$pkgs" 
+
+doas pkg_add -v $pkgs 
 
 if [[ $? -eq 0 ]]; then
 	echo "=== package install completed ==="
@@ -27,12 +28,16 @@ do
 	if [[ -f $HOME/$i ]]; then
 		mv $HOME/$i $HOME/$i.bak.$$
 	fi
-	cp -r $i $HOME/
+	cp  $i $HOME/
 done
 
 for i in .icons .themes .config .fluxbox
 do
-	cp -r $i/* $HOME/$i
+	if [[ -d $i ]]; then
+		cp -R $i/* $HOME/$i/
+	else
+		cp -R $i/* $HOME/$i
+	fi
 
 done
 
