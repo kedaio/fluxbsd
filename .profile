@@ -3,7 +3,7 @@
 # sh/ksh initialization
 
 PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.
-TERM=wsvt25
+TERM=screen-256color
 export PATH HOME TERM
 alias ls='colorls -G'
 alias vi='/usr/local/bin/vim'
