@@ -12,8 +12,8 @@ set sort_aux = 'reverse-date-received'
 set auto_tag = yes
 
 #Authentication
-set imap_user=“acheng@gobsd.org" #your IMAP user name or login
-set imap_pass=“your-pass” #your IMAP password
+set imap_user="acheng@gobsd.org" #your IMAP user name or login
+set imap_pass="your-pass" #your IMAP password
 
 #set smtp_authenticators="login"
 #set ssl_use_sslv3=yes
